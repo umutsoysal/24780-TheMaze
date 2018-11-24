@@ -22,7 +22,7 @@
 		8171064721A9108600F233A4 /* FinalProject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8171064521A9108600F233A4 /* FinalProject.cpp */; };
 		8171064A21A910D100F233A4 /* rendermaze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8171064821A910D100F233A4 /* rendermaze.cpp */; };
 		8171064F21A911EC00F233A4 /* maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8171064D21A911EC00F233A4 /* maze.cpp */; };
-		8171065421A9154C00F233A4 /* shootinggame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8171065221A9154C00F233A4 /* shootinggame.cpp */; };
+		817106A621A92ECA00F233A4 /* game_menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 817106A421A92EC900F233A4 /* game_menu.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,8 +73,8 @@
 		8171064C21A911D100F233A4 /* rendermaze.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = rendermaze.hpp; path = ../../../../.Trash/rendermaze.hpp; sourceTree = "<group>"; };
 		8171064D21A911EC00F233A4 /* maze.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = maze.cpp; sourceTree = "<group>"; };
 		8171065021A9125200F233A4 /* maze.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = maze.h; sourceTree = "<group>"; };
-		8171065121A9152C00F233A4 /* shootinggame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shootinggame.h; sourceTree = "<group>"; };
-		8171065221A9154C00F233A4 /* shootinggame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shootinggame.cpp; sourceTree = "<group>"; };
+		817106A421A92EC900F233A4 /* game_menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_menu.cpp; sourceTree = "<group>"; };
+		817106A521A92EC900F233A4 /* game_menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_menu.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +128,8 @@
 		8171060121A90FD300F233A4 /* PROJECTNEWTRIAL */ = {
 			isa = PBXGroup;
 			children = (
+				817106A421A92EC900F233A4 /* game_menu.cpp */,
+				817106A521A92EC900F233A4 /* game_menu.h */,
 				8171063F21A9106D00F233A4 /* fssimplewindow.h */,
 				8171063B21A9106D00F233A4 /* fssimplewindowcpp.cpp */,
 				8171063A21A9106D00F233A4 /* fssimplewindowobjc.m */,
@@ -149,8 +151,6 @@
 				8171064B21A9111800F233A4 /* rendermaze.h */,
 				8171064D21A911EC00F233A4 /* maze.cpp */,
 				8171065021A9125200F233A4 /* maze.h */,
-				8171065121A9152C00F233A4 /* shootinggame.h */,
-				8171065221A9154C00F233A4 /* shootinggame.cpp */,
 			);
 			path = PROJECTNEWTRIAL;
 			sourceTree = "<group>";
@@ -311,11 +311,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				817106A621A92ECA00F233A4 /* game_menu.cpp in Sources */,
 				8171064221A9106D00F233A4 /* fssimplewindowcpp.cpp in Sources */,
 				8171064721A9108600F233A4 /* FinalProject.cpp in Sources */,
 				8171064F21A911EC00F233A4 /* maze.cpp in Sources */,
 				8171064321A9106D00F233A4 /* yspngenc.cpp in Sources */,
-				8171065421A9154C00F233A4 /* shootinggame.cpp in Sources */,
 				8171064121A9106D00F233A4 /* fssimplewindowobjc.m in Sources */,
 				8171064A21A910D100F233A4 /* rendermaze.cpp in Sources */,
 				8171064421A9106D00F233A4 /* yspng.cpp in Sources */,

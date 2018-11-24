@@ -11,7 +11,7 @@
 #include <time.h>
 #include "rendermaze.h"
 #include "fssimplewindow.h"
-#include "shootinggame.h"
+#include "game_menu.h"
 #include "ysglfontdata.h"
 
 
