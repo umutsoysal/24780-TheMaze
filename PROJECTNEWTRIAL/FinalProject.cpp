@@ -26,6 +26,13 @@ void Render(void *incoming)
     FsSwapBuffers();
 }
 
+
+
+
+
+
+
+
 int main(void)
 {
     // Load historical data file, if it exists
@@ -38,12 +45,27 @@ int main(void)
     //        Generate a new maze/map
     //        Generate count down timer
     //        Monitor keyboard inputs for movement and queue movement sounds
+    FsOpenWindow(0,0,800,600,1);
     printf("WELCOME");
     GameMenu menu;
     srand(time(nullptr));
     
-    int guess;
-    scanf("%d",&guess);
+    for(;;)
+    {
+        printf("TESST HERE?");  //
+        menu.Run();
+        if(FSKEY_ESC==menu.lastKey)
+        {
+            break;
+        }
+        else if(FSKEY_S==menu.lastKey)
+        {
+            break; // Should update here
+        }
+    }
+    printf("ESCAPED FROM MENU?");
+    FsCloseWindow;
+    
     
     bool terminate = false;
     RenderMaze screen;
@@ -55,7 +77,8 @@ int main(void)
     FsChangeToProgramDir();
     FsRegisterOnPaintCallBack(Render, &screen);
     
-    FsOpenWindow(16, 16, x_size*f_scale, y_size*f_scale, 1, "24780 Final Project: The Maze");
+    // US: I suspended it so the screen will be same dimensions each time.
+    //FsOpenWindow(16, 16, x_size*f_scale, y_size*f_scale, 1, "24780 Final Project: The Maze");
     while (terminate == false)
     {
         FsPollDevice();

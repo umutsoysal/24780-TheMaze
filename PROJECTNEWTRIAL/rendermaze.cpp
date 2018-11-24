@@ -10,6 +10,13 @@
 #include <stdlib.h>
 #include "fssimplewindow.h"
 #include "rendermaze.h"
+#include "ysglfontdata.h"
+
+
+
+
+
+
 
 RenderMaze::RenderMaze(void)
 {

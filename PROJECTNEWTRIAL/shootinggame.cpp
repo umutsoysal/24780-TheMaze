@@ -15,7 +15,6 @@
 void RenderMenu(void *)
 {
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-    
     glColor3ub(0,0,255);
     glRasterPos2d(32,48);
     YsGlDrawFontBitmap16x24("24780 PROJECT: THE MAZE");
@@ -30,7 +29,7 @@ void RenderMenu(void *)
 void GameMenu::Run(void)
 {
     FsRegisterOnPaintCallBack(RenderMenu,nullptr);
-    
+    printf("WHY BY PASS HERE?");
     for(;;)
     {
         FsPollDevice();
