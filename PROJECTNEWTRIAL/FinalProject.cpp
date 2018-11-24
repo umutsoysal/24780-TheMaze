@@ -86,8 +86,17 @@ int main(void)
         switch (key)
         {
             case FSKEY_ESC:
-            terminate = true;
-            break;
+            menu.Run();
+            if(FSKEY_ESC==menu.lastKey)
+            {
+                break;
+            }
+            else if(FSKEY_S==menu.lastKey)
+            {
+                break; // Should update here
+            }
+            //terminate = true;
+            //break;
             case FSKEY_UP:
             printf("%c", key);
             screen.MovePlayer(key);
