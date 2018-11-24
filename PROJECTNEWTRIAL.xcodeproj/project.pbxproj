@@ -7,13 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8171060421A90FD300F233A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8171060321A90FD300F233A4 /* AppDelegate.m */; };
 		8171060721A90FD300F233A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8171060621A90FD300F233A4 /* ViewController.m */; };
 		8171060921A90FD500F233A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8171060821A90FD500F233A4 /* Assets.xcassets */; };
 		8171060C21A90FD500F233A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8171060A21A90FD500F233A4 /* Main.storyboard */; };
-		8171060F21A90FD500F233A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8171060E21A90FD500F233A4 /* main.m */; };
 		8171061A21A90FD500F233A4 /* PROJECTNEWTRIALTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8171061921A90FD500F233A4 /* PROJECTNEWTRIALTests.m */; };
 		8171062521A90FD500F233A4 /* PROJECTNEWTRIALUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8171062421A90FD500F233A4 /* PROJECTNEWTRIALUITests.m */; };
+		8171063421A90FE200F233A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8171063321A90FE200F233A4 /* Cocoa.framework */; };
+		8171063621A90FE800F233A4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8171063521A90FE800F233A4 /* OpenGL.framework */; };
+		8171064021A9106D00F233A4 /* ysglfontdata.c in Sources */ = {isa = PBXBuildFile; fileRef = 8171063821A9106D00F233A4 /* ysglfontdata.c */; };
+		8171064121A9106D00F233A4 /* fssimplewindowobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8171063A21A9106D00F233A4 /* fssimplewindowobjc.m */; };
+		8171064221A9106D00F233A4 /* fssimplewindowcpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8171063B21A9106D00F233A4 /* fssimplewindowcpp.cpp */; };
+		8171064321A9106D00F233A4 /* yspngenc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8171063C21A9106D00F233A4 /* yspngenc.cpp */; };
+		8171064421A9106D00F233A4 /* yspng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8171063D21A9106D00F233A4 /* yspng.cpp */; };
+		8171064721A9108600F233A4 /* FinalProject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8171064521A9108600F233A4 /* FinalProject.cpp */; };
+		8171064A21A910D100F233A4 /* rendermaze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8171064821A910D100F233A4 /* rendermaze.cpp */; };
+		8171064F21A911EC00F233A4 /* maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8171064D21A911EC00F233A4 /* maze.cpp */; };
+		8171065421A9154C00F233A4 /* shootinggame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8171065221A9154C00F233A4 /* shootinggame.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,14 +44,11 @@
 
 /* Begin PBXFileReference section */
 		817105FF21A90FD300F233A4 /* PROJECTNEWTRIAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PROJECTNEWTRIAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8171060221A90FD300F233A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		8171060321A90FD300F233A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8171060521A90FD300F233A4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8171060621A90FD300F233A4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8171060821A90FD500F233A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8171060B21A90FD500F233A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8171060D21A90FD500F233A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8171060E21A90FD500F233A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8171061021A90FD500F233A4 /* PROJECTNEWTRIAL.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PROJECTNEWTRIAL.entitlements; sourceTree = "<group>"; };
 		8171061521A90FD500F233A4 /* PROJECTNEWTRIALTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PROJECTNEWTRIALTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8171061921A90FD500F233A4 /* PROJECTNEWTRIALTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PROJECTNEWTRIALTests.m; sourceTree = "<group>"; };
@@ -50,6 +56,25 @@
 		8171062021A90FD500F233A4 /* PROJECTNEWTRIALUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PROJECTNEWTRIALUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8171062421A90FD500F233A4 /* PROJECTNEWTRIALUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PROJECTNEWTRIALUITests.m; sourceTree = "<group>"; };
 		8171062621A90FD500F233A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8171063321A90FE200F233A4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		8171063521A90FE800F233A4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		8171063721A9106D00F233A4 /* ysglfontdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ysglfontdata.h; sourceTree = "<group>"; };
+		8171063821A9106D00F233A4 /* ysglfontdata.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ysglfontdata.c; sourceTree = "<group>"; };
+		8171063921A9106D00F233A4 /* yspng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yspng.h; sourceTree = "<group>"; };
+		8171063A21A9106D00F233A4 /* fssimplewindowobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fssimplewindowobjc.m; sourceTree = "<group>"; };
+		8171063B21A9106D00F233A4 /* fssimplewindowcpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fssimplewindowcpp.cpp; sourceTree = "<group>"; };
+		8171063C21A9106D00F233A4 /* yspngenc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = yspngenc.cpp; sourceTree = "<group>"; };
+		8171063D21A9106D00F233A4 /* yspng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = yspng.cpp; sourceTree = "<group>"; };
+		8171063E21A9106D00F233A4 /* yspngenc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yspngenc.h; sourceTree = "<group>"; };
+		8171063F21A9106D00F233A4 /* fssimplewindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fssimplewindow.h; sourceTree = "<group>"; };
+		8171064521A9108600F233A4 /* FinalProject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FinalProject.cpp; sourceTree = "<group>"; };
+		8171064821A910D100F233A4 /* rendermaze.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rendermaze.cpp; sourceTree = "<group>"; };
+		8171064B21A9111800F233A4 /* rendermaze.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rendermaze.h; sourceTree = "<group>"; };
+		8171064C21A911D100F233A4 /* rendermaze.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = rendermaze.hpp; path = ../../../../.Trash/rendermaze.hpp; sourceTree = "<group>"; };
+		8171064D21A911EC00F233A4 /* maze.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = maze.cpp; sourceTree = "<group>"; };
+		8171065021A9125200F233A4 /* maze.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = maze.h; sourceTree = "<group>"; };
+		8171065121A9152C00F233A4 /* shootinggame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shootinggame.h; sourceTree = "<group>"; };
+		8171065221A9154C00F233A4 /* shootinggame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shootinggame.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8171063621A90FE800F233A4 /* OpenGL.framework in Frameworks */,
+				8171063421A90FE200F233A4 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +111,7 @@
 				8171061821A90FD500F233A4 /* PROJECTNEWTRIALTests */,
 				8171062321A90FD500F233A4 /* PROJECTNEWTRIALUITests */,
 				8171060021A90FD300F233A4 /* Products */,
+				8171063221A90FE200F233A4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,15 +128,29 @@
 		8171060121A90FD300F233A4 /* PROJECTNEWTRIAL */ = {
 			isa = PBXGroup;
 			children = (
-				8171060221A90FD300F233A4 /* AppDelegate.h */,
-				8171060321A90FD300F233A4 /* AppDelegate.m */,
+				8171063F21A9106D00F233A4 /* fssimplewindow.h */,
+				8171063B21A9106D00F233A4 /* fssimplewindowcpp.cpp */,
+				8171063A21A9106D00F233A4 /* fssimplewindowobjc.m */,
+				8171063821A9106D00F233A4 /* ysglfontdata.c */,
+				8171063721A9106D00F233A4 /* ysglfontdata.h */,
+				8171063D21A9106D00F233A4 /* yspng.cpp */,
+				8171063921A9106D00F233A4 /* yspng.h */,
+				8171063C21A9106D00F233A4 /* yspngenc.cpp */,
+				8171064C21A911D100F233A4 /* rendermaze.hpp */,
+				8171063E21A9106D00F233A4 /* yspngenc.h */,
 				8171060521A90FD300F233A4 /* ViewController.h */,
 				8171060621A90FD300F233A4 /* ViewController.m */,
 				8171060821A90FD500F233A4 /* Assets.xcassets */,
 				8171060A21A90FD500F233A4 /* Main.storyboard */,
 				8171060D21A90FD500F233A4 /* Info.plist */,
-				8171060E21A90FD500F233A4 /* main.m */,
 				8171061021A90FD500F233A4 /* PROJECTNEWTRIAL.entitlements */,
+				8171064521A9108600F233A4 /* FinalProject.cpp */,
+				8171064821A910D100F233A4 /* rendermaze.cpp */,
+				8171064B21A9111800F233A4 /* rendermaze.h */,
+				8171064D21A911EC00F233A4 /* maze.cpp */,
+				8171065021A9125200F233A4 /* maze.h */,
+				8171065121A9152C00F233A4 /* shootinggame.h */,
+				8171065221A9154C00F233A4 /* shootinggame.cpp */,
 			);
 			path = PROJECTNEWTRIAL;
 			sourceTree = "<group>";
@@ -129,6 +171,15 @@
 				8171062621A90FD500F233A4 /* Info.plist */,
 			);
 			path = PROJECTNEWTRIALUITests;
+			sourceTree = "<group>";
+		};
+		8171063221A90FE200F233A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8171063521A90FE800F233A4 /* OpenGL.framework */,
+				8171063321A90FE200F233A4 /* Cocoa.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,9 +311,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8171064221A9106D00F233A4 /* fssimplewindowcpp.cpp in Sources */,
+				8171064721A9108600F233A4 /* FinalProject.cpp in Sources */,
+				8171064F21A911EC00F233A4 /* maze.cpp in Sources */,
+				8171064321A9106D00F233A4 /* yspngenc.cpp in Sources */,
+				8171065421A9154C00F233A4 /* shootinggame.cpp in Sources */,
+				8171064121A9106D00F233A4 /* fssimplewindowobjc.m in Sources */,
+				8171064A21A910D100F233A4 /* rendermaze.cpp in Sources */,
+				8171064421A9106D00F233A4 /* yspng.cpp in Sources */,
 				8171060721A90FD300F233A4 /* ViewController.m in Sources */,
-				8171060F21A90FD500F233A4 /* main.m in Sources */,
-				8171060421A90FD300F233A4 /* AppDelegate.m in Sources */,
+				8171064021A9106D00F233A4 /* ysglfontdata.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
