@@ -26,6 +26,20 @@ void RenderMenu(void *)
     FsSwapBuffers();
 }
 
+void RenderEndMenu(void *)
+{
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glColor3ub(0,0,255);
+    glRasterPos2d(32,48);
+    YsGlDrawFontBitmap16x24("XX Seconds... PLAY AGAIN?");
+    glRasterPos2d(32,72);
+    YsGlDrawFontBitmap16x24("S.....START");
+    glRasterPos2d(32,96);
+    YsGlDrawFontBitmap16x24("ESC...QUIT");
+    
+    FsSwapBuffers();
+}
+
 void GameMenu::Run(void)
 {
     FsRegisterOnPaintCallBack(RenderMenu,nullptr);
@@ -47,8 +61,7 @@ void GameMenu::Run(void)
 
 void EndGameMenu::Run(void)
 {
-    FsRegisterOnPaintCallBack(RenderMenu,nullptr);
-    printf("WHY BY PASS HERE?");
+    FsRegisterOnPaintCallBack(RenderEndMenu,nullptr);
     for(;;)
     {
         FsPollDevice();
@@ -58,10 +71,22 @@ void EndGameMenu::Run(void)
         {
             break;
         }
-        
         FsPushOnPaintEvent();
         FsSleep(10);
     }
+}
+EndGameMenu::EndGameMenu()
+{
+    duration=0;
+}
+EndGameMenu::~EndGameMenu()
+{
+    CleanUp();
+}
+
+void EndGameMenu::CleanUp(void)
+{
+    duration=0;
 }
 
 

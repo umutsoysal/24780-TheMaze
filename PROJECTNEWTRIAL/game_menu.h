@@ -21,8 +21,6 @@ class GameObjectWithState : public GameObject
     int state;
 };
 
-
-
 class GameMenu
 {
     public:
@@ -34,9 +32,12 @@ class EndGameMenu
 {
     public:
     int lastKey;
+    int duration; 
     void Run(void);
+    EndGameMenu();   // Constructor
+    ~EndGameMenu();  // Destructor
+    void CleanUp(void);
 };
-
 
 class ShootingGame;
 

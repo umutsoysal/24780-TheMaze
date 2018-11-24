@@ -46,6 +46,7 @@ int main(void)
     FsOpenWindow(0,0,800,600,1);
     printf("WELCOME");
     GameMenu menu;
+    EndGameMenu endmenu;
     srand(time(nullptr));
     
     for(;;)
@@ -85,16 +86,16 @@ int main(void)
         {
             case FSKEY_ESC:
             
-            menu.Run();
+            endmenu.Run();
             time(&end);
-            duration=end-start;
-            printf("Duration is %d seconds\n",duration);
-            if(FSKEY_ESC==menu.lastKey)
+            endmenu.duration=end-start;
+            printf("Duration is %d seconds\n",endmenu.duration);
+            if(FSKEY_ESC==endmenu.lastKey)
             {
                 terminate = true;
                 break;
             }
-            else if(FSKEY_S==menu.lastKey)
+            else if(FSKEY_S==endmenu.lastKey)
             {
                 break; // Should update here
             }
@@ -117,7 +118,6 @@ int main(void)
             screen.MovePlayer(key);
             break;
         }
-
         FsPushOnPaintEvent();
         FsSleep(10);
     }
