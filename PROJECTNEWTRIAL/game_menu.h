@@ -30,6 +30,14 @@ class GameMenu
     void Run(void);
 };
 
+class EndGameMenu
+{
+    public:
+    int lastKey;
+    void Run(void);
+};
+
+
 class ShootingGame;
 
 class Player : public GameObject

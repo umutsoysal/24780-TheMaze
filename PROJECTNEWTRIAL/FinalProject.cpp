@@ -15,7 +15,6 @@
 #include "ysglfontdata.h"
 
 
-
 void Render(void *incoming)
 {
     RenderMaze *screen = (RenderMaze *)incoming;
@@ -39,15 +38,19 @@ int main(void)
     //        Generate a new maze/map
     //        Generate count down timer
     //        Monitor keyboard inputs for movement and queue movement sounds
-    printf("IS IT WORKING");
+    int counter;
+    int duration;
+    time_t start, end;
+    
+    
     FsOpenWindow(0,0,800,600,1);
-    printf("WELCOME TO THE MAZE!");
+    printf("WELCOME");
     GameMenu menu;
     srand(time(nullptr));
     
     for(;;)
     {
-        printf("TEST HERE?");  //
+        printf("TESST HERE?");  //
         menu.Run();
         if(FSKEY_ESC==menu.lastKey)
         {
@@ -60,7 +63,7 @@ int main(void)
     }
     printf("ESCAPED FROM MENU?");
     FsCloseWindow;
-    
+    time(&start);
     
     bool terminate = false;
     RenderMaze screen;
@@ -81,9 +84,14 @@ int main(void)
         switch (key)
         {
             case FSKEY_ESC:
+            
             menu.Run();
+            time(&end);
+            duration=end-start;
+            printf("Duration is %d seconds\n",duration);
             if(FSKEY_ESC==menu.lastKey)
             {
+                terminate = true;
                 break;
             }
             else if(FSKEY_S==menu.lastKey)
@@ -109,8 +117,10 @@ int main(void)
             screen.MovePlayer(key);
             break;
         }
+
         FsPushOnPaintEvent();
         FsSleep(10);
     }
+    //printf("Duration is %d seconds",duration);
     return 0;
 }

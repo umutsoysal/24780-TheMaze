@@ -45,6 +45,27 @@ void GameMenu::Run(void)
     }
 }
 
+void EndGameMenu::Run(void)
+{
+    FsRegisterOnPaintCallBack(RenderMenu,nullptr);
+    printf("WHY BY PASS HERE?");
+    for(;;)
+    {
+        FsPollDevice();
+        lastKey=FsInkey();
+        
+        if(FSKEY_ESC==lastKey || FSKEY_S==lastKey)
+        {
+            break;
+        }
+        
+        FsPushOnPaintEvent();
+        FsSleep(10);
+    }
+}
+
+
+
 ////////////////////////////////////////////////////////////
 
 void Player::Initialize(void)
