@@ -38,7 +38,7 @@ class EndGameMenu
     ~EndGameMenu();  // Destructor
     void CleanUp(void);
 };
-
+/*
 class ShootingGame;
 
 class Player : public GameObject
@@ -95,3 +95,5 @@ class ShootingGame
 
 
 #endif
+*/
+
