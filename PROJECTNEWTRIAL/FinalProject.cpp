@@ -63,6 +63,7 @@ int main(void)
         if (finished==false)
         {
             endmenu.duration=start-end;
+            const int gameduration=start-end;
             endmenu.Run();
         }
     }
@@ -74,7 +75,7 @@ int main(void)
     
     // US: I suspended it so the screen will be same dimensions each time.
     //FsOpenWindow(16, 16, x_size*f_scale, y_size*f_scale, 1, "24780 Final Project: The Maze");
-	
+	 printf("Just another test");
 	
 
     //printf("Duration is %d seconds",duration);

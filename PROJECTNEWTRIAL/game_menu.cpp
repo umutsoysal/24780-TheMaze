@@ -29,7 +29,6 @@ void RenderMenu(void *)
     
     FsSwapBuffers();
 }
-
 void RenderEndMenu(void *)
 {
     char myword[] = "Hello";
@@ -46,7 +45,7 @@ void RenderEndMenu(void *)
 void RenderNextGameMenu(void *)
 {
     char integer_string[32];
-    int integer = endmenu.duration;
+    int integer = 1234;
     sprintf(integer_string, "%d", integer);
     
     
