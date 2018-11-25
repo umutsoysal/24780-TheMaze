@@ -51,7 +51,7 @@ void RenderMaze::initialize(void)
         exit(1);
     }
     M.generate();
-    M.PrintToTerminal();
+    //M.PrintToTerminal();
 }
 void RenderMaze::CleanUp(void)
 {
@@ -116,25 +116,28 @@ void RenderMaze::DrawPlayer(void)
 }
 void RenderMaze::MovePlayer(const char direction)
 {
-    switch (direction)
-    {
-        case 'C':
-        M.moveUp();
-        break;
-        case 'D':
-        M.moveDown();
-        break;
-        case 'E':
-        M.moveLeft();
-        break;
-        case 'F':
-        M.moveRight();
-        break;
-    }
 	if (M.player.x == M.exit_loc.x && M.player.y == M.exit_loc.y)
 	{
 		is_done == true;
 		is_won == true;
+	}
+	else
+	{
+		switch (direction)
+		{
+		case 'C':
+			M.moveUp();
+			break;
+		case 'D':
+			M.moveDown();
+			break;
+		case 'E':
+			M.moveLeft();
+			break;
+		case 'F':
+			M.moveRight();
+			break;
+		}
 	}
 }
 
