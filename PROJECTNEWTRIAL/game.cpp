@@ -25,9 +25,9 @@ void RenderGame(void *incoming)
 
 game::game()
 {
-	int x_size = 7.9; //79 //16
-	int y_size = 5.9; //59 //12
-	int f_scale = 100; //10
+	int x_size = 15; //79 //16
+	int y_size = 11; //59 //12
+	int f_scale = 50; //10
 	screen.initialize(x_size, y_size, f_scale);
 
 }
@@ -74,4 +74,8 @@ bool game::run()
 	{
 		return false;
 	}
+}
+double game::get_timer()
+{
+	return 3.1415926535;
 }
