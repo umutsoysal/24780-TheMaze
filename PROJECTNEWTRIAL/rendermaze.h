@@ -13,10 +13,12 @@
 
 class RenderMaze
 {
-    private:
+private:
     maze M;
     int width, height, scale;
-    public:
+public:
+	bool is_done;
+	bool is_won;
     RenderMaze(void);
     RenderMaze(const int w, const int h, const int f);
     ~RenderMaze(void);
@@ -25,6 +27,7 @@ class RenderMaze
     void initialize(const int w, const int h, const int f);
     void MovePlayer(const char direction);
     void DrawMap(void);
+	void DrawPixel(const Node element, const int colors[3]);
     void DrawPlayer(void);
 };
 

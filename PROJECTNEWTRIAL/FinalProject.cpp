@@ -118,6 +118,18 @@ int main(void)
             screen.MovePlayer(key);
             break;
         }
+		if (screen.is_done == true)
+		{
+			terminate = true;
+			if (screen.is_won == true)
+			{
+				printf("Current map is ended and you won!");
+			}
+			else
+			{
+				printf("Current map is ended!");
+			}
+		}
         FsPushOnPaintEvent();
         FsSleep(10);
     }
