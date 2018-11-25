@@ -196,8 +196,8 @@ void RenderMaze::MovePlayer(const char direction)
 {
 	if (M.player.x == M.exit_loc.x && M.player.y == M.exit_loc.y)
 	{
-		is_done == true;
-		is_won == true;
+		is_done = true;
+		is_won = true;
 	}
 	else
 	{
