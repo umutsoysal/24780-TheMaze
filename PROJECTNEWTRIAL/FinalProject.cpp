@@ -63,6 +63,7 @@ int main(void)
         if (finished==false)
         {
             endmenu.duration=start-end;
+            const int gameduration=start-end;
             endmenu.Run();
         }
     }
