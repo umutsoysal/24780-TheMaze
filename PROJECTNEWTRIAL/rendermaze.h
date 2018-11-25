@@ -13,6 +13,7 @@ class RenderMaze
 private:
     maze M;
     int width, height, scale;
+	int side; //Refers to width of each 3d object. 
 	bool use_3d;
 public:
 	bool is_done;
@@ -27,7 +28,7 @@ public:
     void MovePlayer(const char direction);
     void DrawMap(void);
 	void Draw3DMap(void);
-	void DrawPixel(const Node element, const int colors[3]);
+	void DrawPixel(const Node element, const int colors[3], bool simple = true);
     void DrawPlayer(void);
 	void Render(void);
 };
