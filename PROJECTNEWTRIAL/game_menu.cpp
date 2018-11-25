@@ -46,7 +46,7 @@ void RenderEndMenu(void *)
 void RenderNextGameMenu(void *)
 {
     char integer_string[32];
-	int integer = 1234; // endmenu.duration;
+    int integer = endmenu.duration;
     sprintf(integer_string, "%d", integer);
     
     

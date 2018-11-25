@@ -50,22 +50,21 @@ int main(void)
         {
             break;
         }
-		else if (FSKEY_S == menu.lastKey)
-		{
+        else if(FSKEY_S==menu.lastKey)
+        {
 			game new_game;
-			bool finished = new_game.run();
-			//break;
-
-			if (finished == true)
-			{
-				nextmenu.Run();
-			}
-			if (finished == false)
-			{
-				endmenu.duration = start - end;
-				endmenu.Run();
-			}
-		}
+            bool finished = new_game.run();
+            //break;
+        }
+        if (finished==true)
+        {
+            nextmenu.Run();
+        }
+        if (finished==false)
+        {
+            endmenu.duration=start-end;
+            endmenu.Run();
+        }
     }
     printf("ESCAPED FROM MENU?");
     FsCloseWindow;
