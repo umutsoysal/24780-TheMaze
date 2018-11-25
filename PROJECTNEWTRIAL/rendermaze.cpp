@@ -71,20 +71,11 @@ void RenderMaze::DrawMap(void)
             switch (M.getMapPixel(x, y))
             {
                 case '0':
-                glColor3ub(255, 255, 255);
-                break;
+					glColor3ub(255, 255, 255);
+					break;
                 case '1':
-                glColor3ub(0, 0, 0);
-                break;
-                case 'O':
-                glColor3ub(0, 0, 255);
-                break;
-                case 'X':
-                glColor3ub(0, 255, 0);
-                break;
-                case '*':
-                glColor3ub(255, 0, 0);
-                break;
+					glColor3ub(0, 0, 0);
+					break;
             }
             glBegin(GL_QUADS);
             
@@ -95,6 +86,7 @@ void RenderMaze::DrawMap(void)
             glEnd();
         }
     }
+
 }
 void RenderMaze::DrawPlayer(void)
 {

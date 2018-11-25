@@ -102,19 +102,19 @@ int main(void)
             //terminate = true;
             //break;
             case FSKEY_UP:
-            printf("%c", key);
+            //printf("%c", key);
             screen.MovePlayer(key);
             break;
             case FSKEY_DOWN:
-            printf("%c", key);
+            //printf("%c", key);
             screen.MovePlayer(key);
             break;
             case FSKEY_LEFT:
-            printf("%c", key);
+            //printf("%c", key);
             screen.MovePlayer(key);
             break;
             case FSKEY_RIGHT:
-            printf("%c", key);
+            //printf("%c", key);
             screen.MovePlayer(key);
             break;
         }

@@ -154,6 +154,7 @@ Node *maze::link(Node *n)
 }
 void maze::generate(void)
 {
+	// Here we generate a map by running a binary tree
     Node *start, *last;
     if (nodes != nullptr)
     {
@@ -164,8 +165,17 @@ void maze::generate(void)
         
         //Connect nodes until start node is reached and can't be left
         while ((last = link(last)) != start);
-        nodes[start->y*width + start->x].c = entry;
-        nodes[(width-1)*(height-1)].c = exit;
+        //nodes[start->y*width + start->x].c = entry;
+		entry_loc.c = entry;
+		entry_loc.x = start->x;
+		entry_loc.y = start->y;
+		entry_loc.parent = start->parent;
+        //nodes[(width-1)*(height-1)].c = exit;
+		exit_loc.c = entry;
+		exit_loc.x = nodes[(width - 1)*(height - 1)].x;
+		exit_loc.y = nodes[(width - 1)*(height - 1)].y;
+		exit_loc.parent = nodes[(width - 1)*(height - 1)].parent;
+
         player.x = start->x;
         player.y = start->y;
         player.c = '*';

@@ -34,6 +34,8 @@ class maze
     char exit; //Character to return for Exit Point
     public:
     Node player; //The node for current player
+	Node entry_loc; //The maze entry node.
+	Node exit_loc;
     maze(void);
     void CleanUp(void);
     ~maze(void);
