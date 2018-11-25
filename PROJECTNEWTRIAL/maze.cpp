@@ -172,12 +172,14 @@ void maze::generate(void)
 		entry_loc.parent = start->parent;
         //nodes[(width-1)*(height-1)].c = exit;
 		exit_loc.c = entry;
-		exit_loc.x = nodes[(width - 1)*(height - 1)].x;
-		exit_loc.y = nodes[(width - 1)*(height - 1)].y;
-		exit_loc.parent = nodes[(width - 1)*(height - 1)].parent;
+		exit_loc.x = nodes[5 * width + 1].x; //(width - 1)*(height - 1)
+		exit_loc.y = nodes[5 * width + 1].y;
+		exit_loc.parent = nodes[60].parent;
+		printf("\nExit node: (%d, %d)\n", exit_loc.x, exit_loc.y);
 
         player.x = start->x;
         player.y = start->y;
+		player.parent = start->parent;
         player.c = '*';
         
     }
@@ -258,7 +260,8 @@ void maze::PrintToTerminal()
         {
             
             printf("%c", nodes[j + i * width].c);
+			printf("(%d,%d)", nodes[j + i * width].x, nodes[j + i * width].y);
         }
-        printf("\n");
+        printf("\n\n");
     }
 }
