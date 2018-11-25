@@ -39,6 +39,9 @@
     <ClInclude Include="yssimplesound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\PROJECTNEWTRIAL\framework3d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\PROJECTNEWTRIAL\game_menu.cpp">
@@ -69,6 +72,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="yssimplesound_dsound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\PROJECTNEWTRIAL\framework3d.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

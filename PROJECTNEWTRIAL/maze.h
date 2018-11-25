@@ -1,10 +1,4 @@
-//
-//  maze.h
-//  PROJECTNEWTRIAL
-//
-//  Created by usoysal on 11/24/18.
-//  Copyright © 2018 usoysal. All rights reserved.
-//
+
 
 #ifndef MAZE_FP_GAME_24780
 #define MAZE_FP_GAME_24780

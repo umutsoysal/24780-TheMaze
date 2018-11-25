@@ -1,10 +1,4 @@
-//
-//  maze.cpp
-//  PROJECTNEWTRIAL
-//
-//  Created by usoysal on 11/23/18.
-//  Copyright © 2018 usoysal. All rights reserved.
-//
+
 
 #include <stdio.h>
 #include <stdlib.h>
