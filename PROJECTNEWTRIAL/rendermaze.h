@@ -1,24 +1,23 @@
-//
-//  rendermaze.h
-//  PROJECTNEWTRIAL
-//
-//  Created by usoysal on 11/23/18.
-//  Copyright © 2018 usoysal. All rights reserved.
-//
+
 
 #include "maze.h"
+#include "framework3d.h"
 
 #ifndef RMAZE_FP_GAME_24780
 #define RMAZE_FP_GAME_24780
+
+const double PI = 3.14159265;
 
 class RenderMaze
 {
 private:
     maze M;
     int width, height, scale;
+	bool use_3d;
 public:
 	bool is_done;
 	bool is_won;
+	CameraObject camera;
     RenderMaze(void);
     RenderMaze(const int w, const int h, const int f);
     ~RenderMaze(void);
@@ -27,8 +26,10 @@ public:
     void initialize(const int w, const int h, const int f);
     void MovePlayer(const char direction);
     void DrawMap(void);
+	void Draw3DMap(void);
 	void DrawPixel(const Node element, const int colors[3]);
     void DrawPlayer(void);
+	void Render(void);
 };
 
 #endif

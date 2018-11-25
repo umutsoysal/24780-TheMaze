@@ -9,22 +9,13 @@
 #include <stdlib.h>
 #include <string>
 #include <time.h>
-#include "rendermaze.h"
+#include "game.h"
 #include "fssimplewindow.h"
 #include "game_menu.h"
 #include "ysglfontdata.h"
 
 
-void Render(void *incoming)
-{
-    RenderMaze *screen = (RenderMaze *)incoming;
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
-    screen->DrawMap();
-    YsGlDrawFontBitmap16x24("24780 PROJECT: THE MAZE");
-    screen->DrawPlayer();
-    FsSwapBuffers();
-}
+
 
 int main(void)
 {
@@ -59,79 +50,25 @@ int main(void)
         }
         else if(FSKEY_S==menu.lastKey)
         {
-            break; // Should update here
+			game new_game;
+			bool finished = new_game.run();
+            //break; 
         }
     }
     printf("ESCAPED FROM MENU?");
     FsCloseWindow;
     time(&start);
     
-    bool terminate = false;
-    RenderMaze screen;
-    int x_size = 7.9; //79
-    int y_size = 5.9; //59
-    int f_scale = 100; //10
-    screen.initialize(x_size, y_size, f_scale);
+    
     
     FsChangeToProgramDir();
-    FsRegisterOnPaintCallBack(Render, &screen);
+    
     
     // US: I suspended it so the screen will be same dimensions each time.
     //FsOpenWindow(16, 16, x_size*f_scale, y_size*f_scale, 1, "24780 Final Project: The Maze");
-    while (terminate == false)
-    {
-        FsPollDevice();
-        auto key = FsInkey();
-        switch (key)
-        {
-            case FSKEY_ESC:
-            
-            endmenu.Run();
-            time(&end);
-            endmenu.duration=end-start;
-            printf("Duration is %d seconds\n",endmenu.duration);
-			if (screen.is_done == true)
-			{
-				terminate = true;
-				if (screen.is_won == true)
-				{
-					printf("Current map is ended and you won!");
-				}
-				else
-				{
-					printf("Current map is ended!");
-				}
-				break;
-			}
-            if(FSKEY_ESC==endmenu.lastKey)
-            {
-                terminate = true;
-                break;
-            }
-            else if(FSKEY_S==endmenu.lastKey)
-            {
-                break; // Should update here
-            }
-            case FSKEY_UP:
-            //printf("%c", key);
-            screen.MovePlayer(key);
-            break;
-            case FSKEY_DOWN:
-            //printf("%c", key);
-            screen.MovePlayer(key);
-            break;
-            case FSKEY_LEFT:
-            //printf("%c", key);
-            screen.MovePlayer(key);
-            break;
-            case FSKEY_RIGHT:
-            //printf("%c", key);
-            screen.MovePlayer(key);
-            break;
-        }
-        FsPushOnPaintEvent();
-        FsSleep(10);
-    }
+	
+	
+
     //printf("Duration is %d seconds",duration);
     return 0;
 }

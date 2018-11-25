@@ -152,6 +152,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\PROJECTNEWTRIAL\framework3d.h" />
+    <ClInclude Include="..\..\PROJECTNEWTRIAL\game.h" />
     <ClInclude Include="..\..\PROJECTNEWTRIAL\game_menu.h" />
     <ClInclude Include="..\..\PROJECTNEWTRIAL\maze.h" />
     <ClInclude Include="..\..\PROJECTNEWTRIAL\rendermaze.h" />
@@ -163,6 +165,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\PROJECTNEWTRIAL\FinalProject.cpp" />
+    <ClCompile Include="..\..\PROJECTNEWTRIAL\framework3d.cpp" />
+    <ClCompile Include="..\..\PROJECTNEWTRIAL\game.cpp" />
     <ClCompile Include="..\..\PROJECTNEWTRIAL\game_menu.cpp" />
     <ClCompile Include="..\..\PROJECTNEWTRIAL\maze.cpp" />
     <ClCompile Include="..\..\PROJECTNEWTRIAL\rendermaze.cpp" />
