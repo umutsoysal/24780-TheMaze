@@ -6,8 +6,8 @@
 //  Copyright © 2018 usoysal. All rights reserved.
 //
 
-#ifndef SHOOT_H_INCLUDED
-#define SHOOT_H_INCLUDED
+#ifndef GAME_MENU_H_INCLUDED
+#define GAME_MENU_H_INCLUDED
 
 class GameObject
 {
@@ -38,7 +38,7 @@ class EndGameMenu
     ~EndGameMenu();  // Destructor
     void CleanUp(void);
 };
-
+/*
 class ShootingGame;
 
 class Player : public GameObject
@@ -93,5 +93,7 @@ class ShootingGame
     static void Render(void *);
 };
 
-
+*/
 #endif
+
+

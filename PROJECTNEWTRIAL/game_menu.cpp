@@ -92,7 +92,7 @@ void EndGameMenu::CleanUp(void)
 
 
 ////////////////////////////////////////////////////////////
-
+/*
 void Player::Initialize(void)
 {
     x=400;
@@ -365,4 +365,5 @@ void ShootingGame::Draw(void)
         }
     }
 }
+*/
 
