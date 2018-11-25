@@ -90,6 +90,19 @@ int main(void)
             time(&end);
             endmenu.duration=end-start;
             printf("Duration is %d seconds\n",endmenu.duration);
+			if (screen.is_done == true)
+			{
+				terminate = true;
+				if (screen.is_won == true)
+				{
+					printf("Current map is ended and you won!");
+				}
+				else
+				{
+					printf("Current map is ended!");
+				}
+				break;
+			}
             if(FSKEY_ESC==endmenu.lastKey)
             {
                 terminate = true;
@@ -99,8 +112,6 @@ int main(void)
             {
                 break; // Should update here
             }
-            //terminate = true;
-            //break;
             case FSKEY_UP:
             //printf("%c", key);
             screen.MovePlayer(key);
@@ -118,18 +129,6 @@ int main(void)
             screen.MovePlayer(key);
             break;
         }
-		if (screen.is_done == true)
-		{
-			terminate = true;
-			if (screen.is_won == true)
-			{
-				printf("Current map is ended and you won!");
-			}
-			else
-			{
-				printf("Current map is ended!");
-			}
-		}
         FsPushOnPaintEvent();
         FsSleep(10);
     }
