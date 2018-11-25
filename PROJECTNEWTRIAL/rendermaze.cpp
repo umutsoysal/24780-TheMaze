@@ -51,7 +51,7 @@ void RenderMaze::initialize(void)
         exit(1);
     }
     M.generate();
-    //M.PrintToTerminal();
+    M.PrintToTerminal();
 }
 void RenderMaze::CleanUp(void)
 {

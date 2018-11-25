@@ -68,9 +68,9 @@ int main(void)
     
     bool terminate = false;
     RenderMaze screen;
-    int x_size = 79;
-    int y_size = 59;
-    int f_scale = 10;
+    int x_size = 7.9; //79
+    int y_size = 5.9; //59
+    int f_scale = 100; //10
     screen.initialize(x_size, y_size, f_scale);
     
     FsChangeToProgramDir();
