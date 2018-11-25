@@ -17,6 +17,7 @@
 //TEST NEW COMMENT LINE
 void RenderMenu(void *)
 {
+    
     std::string Something = "Some Text";
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glColor3ub(0,0,255);
@@ -26,7 +27,6 @@ void RenderMenu(void *)
     YsGlDrawFontBitmap16x24("S.....START");
     glRasterPos2d(32,96);
     YsGlDrawFontBitmap16x24("ESC...QUIT");
-    
     FsSwapBuffers();
 }
 void RenderEndMenu(void *)
@@ -48,11 +48,8 @@ void RenderNextGameMenu(void *)
     int integer = 1234;
     sprintf(integer_string, "%d", integer);
     
-    
     char myword[] = "YOU WON! ";
-    
     char myword1[] = " seconds";
-    
     strcat(myword, integer_string);
     strcat(myword, myword1);
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
