@@ -10,4 +10,5 @@ public:
 	double difficulty;
 	game(void);
 	bool run(void);
+	double get_timer(void);
 };

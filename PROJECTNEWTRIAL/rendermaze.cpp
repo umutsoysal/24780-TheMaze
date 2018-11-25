@@ -89,7 +89,7 @@ void RenderMaze::Draw3DMap(void)
 {
 	// 3D version of the same maze
 	int r, g, b, a;
-	side = 50;
+	side = scale/2;
 	for (int y = 0; y < height; ++y)
 	{
 		for (int x = 0; x < width; ++x)
@@ -292,16 +292,23 @@ void RenderMaze::MovePlayer(const char direction)
 			M.moveRight();
 			break;
 		case FSKEY_W:
-			camera.p += PI / 180.0;
+			if (camera.y < width*scale)
+			{
+				camera.y += scale / 2;
+				//camera.p += PI / 180.0;
+			}
 			break;
 		case FSKEY_S:
-			camera.p -= PI / 180.0;
+			camera.y -= scale / 2;
+			//camera.p -= PI / 180.0;
 			break;
 		case FSKEY_A:
-			camera.h += PI / 180.0;
+			camera.x -= scale / 2;
+			//camera.h += PI / 180.0;
 			break;
 		case FSKEY_D:
-			camera.h -= PI / 180.0;
+			camera.x += scale / 2;
+			//camera.h -= PI / 180.0;
 			break;
 		case FSKEY_X:
 			break;
