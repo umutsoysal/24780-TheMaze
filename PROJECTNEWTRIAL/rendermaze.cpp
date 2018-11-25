@@ -1,6 +1,6 @@
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "fssimplewindow.h"
 #include "rendermaze.h"
 #include "ysglfontdata.h"
@@ -17,6 +17,7 @@ RenderMaze::RenderMaze(void)
 	camera.h = 0;
 	camera.nearZ = 1.0f;
 	camera.farZ = 5000000;
+	side = 50;
 	use_3d = false;
 	is_done = false;
 	is_won = false;
@@ -87,7 +88,7 @@ void RenderMaze::DrawMap(void)
 void RenderMaze::Draw3DMap(void)
 {
 	// 3D version of the same maze
-	int r, g, b, a, side;
+	int r, g, b, a;
 	side = 50;
 	for (int y = 0; y < height; ++y)
 	{
@@ -162,19 +163,78 @@ void RenderMaze::Draw3DMap(void)
 		}
 	}
 }
-void RenderMaze::DrawPixel(const Node element, const int colors[3])
+void RenderMaze::DrawPixel(const Node element, const int colors[3], bool simple)
 {
-	int x = element.x;
-	int y = element.y;
-	glColor3ub(colors[0], colors[1], colors[2]);
-	glBegin(GL_QUADS);
-
+	
 	if (use_3d == true)
 	{
-		//
+		int subscale = 1;
+		double cx = element.x*scale; //0,0,0, 5, 36,18
+		double cy = element.y*scale;
+		double cz = 10 + (double)side/2;
+		double rad = (double)side;
+		int divH = 36;
+		int divP = 18;
+
+		glBegin(GL_QUADS);
+		for (int i = -divP; i < divP; ++i)
+		{
+			double p0 = (double)i*PI*0.5 / (double)divP;
+			double p1 = (double)(i + 1)*PI*0.5 / (double)divP;
+			for (int j = 0; j < divH; ++j)
+			{
+				double h0 = (double)j*2.0*PI / (double)divH;
+				double h1 = (double)(j + 1)*2.0*PI / (double)divH;
+
+				double x0 = cx + rad * cos(p0)*cos(h0);
+				double y0 = cy + rad * sin(p0);
+				double z0 = cz + rad * cos(p0)*sin(h0);
+
+				double x1 = cx + rad * cos(p0)*cos(h1);
+				double y1 = cy + rad * sin(p0);
+				double z1 = cz + rad * cos(p0)*sin(h1);
+
+				double x2 = cx + rad * cos(p1)*cos(h1);
+				double y2 = cy + rad * sin(p1);
+				double z2 = cz + rad * cos(p1)*sin(h1);
+
+				double x3 = cx + rad * cos(p1)*cos(h0);
+				double y3 = cy + rad * sin(p1);
+				double z3 = cz + rad * cos(p1)*sin(h0);
+
+				if (0 != (i + j) % 2 && simple == false)
+				{
+					glColor3f(colors[0], colors[1], colors[2]);
+				}
+				else
+				{
+					glColor3f(colors[2], colors[2], colors[2]);
+				}
+				if (simple == true)
+				{
+					glVertex3d(subscale*x0, subscale*y0, 11);
+					glVertex3d(subscale*x1, subscale*y1, 11);
+					glVertex3d(subscale*x2, subscale*y2, 11);
+					glVertex3d(subscale*x3, subscale*y3, 11);
+				}
+				else
+				{
+					glVertex3d(subscale*x0, subscale*y0, z0);
+					glVertex3d(subscale*x1, subscale*y1, z1);
+					glVertex3d(subscale*x2, subscale*y2, z2);
+					glVertex3d(subscale*x3, subscale*y3, z3);
+				}
+			}
+		}
+		glEnd();
 	}
 	else
 	{
+		int x = element.x;
+		int y = element.y;
+		glColor3ub(colors[0], colors[1], colors[2]);
+
+		glBegin(GL_QUADS);
 		glVertex2i(scale*(x), scale*y);
 		glVertex2i(scale*(x), scale*(y + 1));
 		glVertex2i(scale*(x + 1), scale*(y + 1));
@@ -185,12 +245,12 @@ void RenderMaze::DrawPixel(const Node element, const int colors[3])
 void RenderMaze::DrawPlayer(void)
 {
 	int player_color[3] = { 255, 0 ,0 };
-	int entry_color[3] = { 0, 150 ,150 };
-	int exit_color[3] = { 0, 240 ,0 };
+	int entry_color[3] = { 60, 60 ,60 };
+	int exit_color[3] = { 25, 125 ,55 };
 
-	DrawPixel(M.player, player_color);
-	DrawPixel(M.entry_loc, entry_color);
-	DrawPixel(M.exit_loc, exit_color);
+	DrawPixel(M.player, player_color, false);
+	DrawPixel(M.entry_loc, entry_color, true);
+	DrawPixel(M.exit_loc, exit_color, true);
 }
 void RenderMaze::MovePlayer(const char direction)
 {
@@ -204,10 +264,26 @@ void RenderMaze::MovePlayer(const char direction)
 		switch (direction)
 		{
 		case FSKEY_UP:
-			M.moveUp();
+			if (use_3d)
+			{
+				M.moveDown();
+			}
+			else
+			{
+				M.moveUp();
+			}
+			
 			break;
 		case FSKEY_DOWN:
-			M.moveDown();
+			if (use_3d)
+			{
+				M.moveUp();
+			}
+			else
+			{
+				M.moveDown();
+			}
+			
 			break;
 		case FSKEY_LEFT:
 			M.moveLeft();
@@ -253,6 +329,7 @@ void RenderMaze::Render(void)
 	// 3D drawing from here
 	use_3d = true;
 	Draw3DMap();
+	DrawPlayer();
 
 	// Set up 2D drawing
 	glMatrixMode(GL_PROJECTION);

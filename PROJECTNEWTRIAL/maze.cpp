@@ -1,5 +1,3 @@
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "maze.h"
@@ -178,7 +176,7 @@ void maze::generate(void)
 						exit_loc.x = nodes[i].x; //(width - 1)*(height - 1)
 						exit_loc.y = nodes[i].y;
 						exit_loc.parent = nodes[i].parent;
-						printf("\n(%d,%d)->%c\n\n", nodes[i].x, nodes[i].y, nodes[i].c);
+						//printf("\n(%d,%d)->%c\n\n", nodes[i].x, nodes[i].y, nodes[i].c);
 						seeking = false;
 						break;
 					}
