@@ -31,6 +31,7 @@ int main(void)
     //        Monitor keyboard inputs for movement and queue movement sounds
     int counter;
     int duration;
+    bool finished;
     time_t start, end;
     
     
@@ -38,6 +39,7 @@ int main(void)
     printf("WELCOME");
     GameMenu menu;
     EndGameMenu endmenu;
+    NextGameMenu nextmenu;
     srand(time(nullptr));
     
     for(;;)
@@ -51,16 +53,22 @@ int main(void)
         else if(FSKEY_S==menu.lastKey)
         {
 			game new_game;
-			bool finished = new_game.run();
-            //break; 
+            bool finished = new_game.run();
+            //break;
+        }
+        if (finished==true)
+        {
+            nextmenu.Run();
+        }
+        if (finished==false)
+        {
+            endmenu.duration=start-end;
+            endmenu.Run();
         }
     }
     printf("ESCAPED FROM MENU?");
     FsCloseWindow;
     time(&start);
-    
-    
-    
     FsChangeToProgramDir();
     
     

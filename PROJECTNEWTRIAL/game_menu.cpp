@@ -11,9 +11,13 @@
 #include "fssimplewindow.h"
 #include "ysglfontdata.h"
 #include "game_menu.h"
+#include <string>
+#include <iostream>
+
 
 void RenderMenu(void *)
 {
+    std::string Something = "Some Text";
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glColor3ub(0,0,255);
     glRasterPos2d(32,48);
@@ -28,15 +32,38 @@ void RenderMenu(void *)
 
 void RenderEndMenu(void *)
 {
+    char myword[] = "Hello";
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glColor3ub(0,0,255);
     glRasterPos2d(32,48);
-    YsGlDrawFontBitmap16x24("XX Seconds... PLAY AGAIN?");
+    YsGlDrawFontBitmap16x24(myword);
     glRasterPos2d(32,72);
     YsGlDrawFontBitmap16x24("S.....START");
     glRasterPos2d(32,96);
     YsGlDrawFontBitmap16x24("ESC...QUIT");
+    FsSwapBuffers();
+}
+void RenderNextGameMenu(void *)
+{
+    char integer_string[32];
+    int integer = endmenu.duration;
+    sprintf(integer_string, "%d", integer);
     
+    
+    char myword[] = "YOU WON! ";
+    
+    char myword1[] = " seconds";
+    
+    strcat(myword, integer_string);
+    strcat(myword, myword1);
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glColor3ub(0,0,255);
+    glRasterPos2d(32,48);
+    YsGlDrawFontBitmap16x24(myword);
+    glRasterPos2d(32,72);
+    YsGlDrawFontBitmap16x24("S.....START");
+    glRasterPos2d(32,96);
+    YsGlDrawFontBitmap16x24("ESC...QUIT");
     FsSwapBuffers();
 }
 
@@ -58,6 +85,7 @@ void GameMenu::Run(void)
         FsSleep(10);
     }
 }
+
 
 void EndGameMenu::Run(void)
 {
@@ -85,6 +113,37 @@ EndGameMenu::~EndGameMenu()
 }
 
 void EndGameMenu::CleanUp(void)
+{
+    duration=0;
+}
+
+
+void NextGameMenu::Run(void)
+{
+    FsRegisterOnPaintCallBack(RenderNextGameMenu,nullptr);
+    for(;;)
+    {
+        FsPollDevice();
+        lastKey=FsInkey();
+        
+        if(FSKEY_ESC==lastKey || FSKEY_S==lastKey)
+        {
+            break;
+        }
+        FsPushOnPaintEvent();
+        FsSleep(10);
+    }
+}
+NextGameMenu::NextGameMenu()
+{
+    duration=0;
+}
+NextGameMenu::~NextGameMenu()
+{
+    CleanUp();
+}
+
+void NextGameMenu::CleanUp(void)
 {
     duration=0;
 }

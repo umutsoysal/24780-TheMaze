@@ -23,6 +23,9 @@
 		8171064A21A910D100F233A4 /* rendermaze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8171064821A910D100F233A4 /* rendermaze.cpp */; };
 		8171064F21A911EC00F233A4 /* maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8171064D21A911EC00F233A4 /* maze.cpp */; };
 		817106A621A92ECA00F233A4 /* game_menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 817106A421A92EC900F233A4 /* game_menu.cpp */; };
+		81F1EBE921AB4BE500D95483 /* workflow.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 81F1EBE421AB4BE400D95483 /* workflow.rtf */; };
+		81F1EBEA21AB4BE500D95483 /* framework3d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F1EBE521AB4BE400D95483 /* framework3d.cpp */; };
+		81F1EBEB21AB4BE500D95483 /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F1EBE821AB4BE500D95483 /* game.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,11 @@
 		8171065021A9125200F233A4 /* maze.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = maze.h; sourceTree = "<group>"; };
 		817106A421A92EC900F233A4 /* game_menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_menu.cpp; sourceTree = "<group>"; };
 		817106A521A92EC900F233A4 /* game_menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_menu.h; sourceTree = "<group>"; };
+		81F1EBE421AB4BE400D95483 /* workflow.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = workflow.rtf; sourceTree = "<group>"; };
+		81F1EBE521AB4BE400D95483 /* framework3d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework3d.cpp; sourceTree = "<group>"; };
+		81F1EBE621AB4BE400D95483 /* framework3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framework3d.h; sourceTree = "<group>"; };
+		81F1EBE721AB4BE400D95483 /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
+		81F1EBE821AB4BE500D95483 /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +136,11 @@
 		8171060121A90FD300F233A4 /* PROJECTNEWTRIAL */ = {
 			isa = PBXGroup;
 			children = (
+				81F1EBE521AB4BE400D95483 /* framework3d.cpp */,
+				81F1EBE621AB4BE400D95483 /* framework3d.h */,
+				81F1EBE821AB4BE500D95483 /* game.cpp */,
+				81F1EBE721AB4BE400D95483 /* game.h */,
+				81F1EBE421AB4BE400D95483 /* workflow.rtf */,
 				817106A421A92EC900F233A4 /* game_menu.cpp */,
 				817106A521A92EC900F233A4 /* game_menu.h */,
 				8171063F21A9106D00F233A4 /* fssimplewindow.h */,
@@ -286,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8171060921A90FD500F233A4 /* Assets.xcassets in Resources */,
+				81F1EBE921AB4BE500D95483 /* workflow.rtf in Resources */,
 				8171060C21A90FD500F233A4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				817106A621A92ECA00F233A4 /* game_menu.cpp in Sources */,
+				81F1EBEA21AB4BE500D95483 /* framework3d.cpp in Sources */,
 				8171064221A9106D00F233A4 /* fssimplewindowcpp.cpp in Sources */,
 				8171064721A9108600F233A4 /* FinalProject.cpp in Sources */,
 				8171064F21A911EC00F233A4 /* maze.cpp in Sources */,
@@ -321,6 +336,7 @@
 				8171064421A9106D00F233A4 /* yspng.cpp in Sources */,
 				8171060721A90FD300F233A4 /* ViewController.m in Sources */,
 				8171064021A9106D00F233A4 /* ysglfontdata.c in Sources */,
+				81F1EBEB21AB4BE500D95483 /* game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
