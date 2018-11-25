@@ -33394,7 +33394,6 @@ void YsGlDrawFontBitmap24x40(const char str[])
 	YsGlDrawFontBitmapDirect(str,YsFont24x40,24,40);
 }
 
-
 void YsGlUseFontBitmap32x48(int listBase)
 {
 	YsGlMakeFontBitmapDisplayList(listBase,YsFont32x48,32,48);
@@ -33403,7 +33402,6 @@ void YsGlDrawFontBitmap32x48(const char str[])
 {
 	YsGlDrawFontBitmapDirect(str,YsFont32x48,32,48);
 }
-
 
 void YsGlUseFontBitmap28x44(int listBase)
 {
@@ -33414,8 +33412,6 @@ void YsGlDrawFontBitmap28x44(const char str[])
 	YsGlDrawFontBitmapDirect(str,YsFont28x44,28,44);
 }
 
-
-
 void YsGlSelectAndUseFontBitmapByHeight(int *selectedWidth,int *selectedHeight,int listBase,int fontHeight)
 {
 	const unsigned char * const *ptr=YsGlSelectFontBitmapPointerByHeight(selectedWidth,selectedHeight,fontHeight);
@@ -33424,3 +33420,4 @@ void YsGlSelectAndUseFontBitmapByHeight(int *selectedWidth,int *selectedHeight,i
 		YsGlMakeFontBitmapDisplayList(listBase,ptr,*selectedWidth,*selectedHeight);
 	}
 }
+
