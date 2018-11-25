@@ -171,10 +171,27 @@ void maze::generate(void)
 		entry_loc.y = start->y;
 		entry_loc.parent = start->parent;
         //nodes[(width-1)*(height-1)].c = exit;
-		exit_loc.c = entry;
-		exit_loc.x = nodes[5 * width + 1].x; //(width - 1)*(height - 1)
-		exit_loc.y = nodes[5 * width + 1].y;
-		exit_loc.parent = nodes[60].parent;
+		bool seeking = true;
+		while (seeking == true)
+		{
+			for (int i = 0; i < width*height; ++i)
+			{
+				//Node candidate = nodes[i];
+				if (nodes[i].x != entry_loc.x && nodes[i].y != entry_loc.y && nodes[i].c == '0')
+				{
+					if (nodes[i].x > 0 && nodes[i].y > 0)
+					{
+						exit_loc.x = nodes[i].x; //(width - 1)*(height - 1)
+						exit_loc.y = nodes[i].y;
+						exit_loc.parent = nodes[i].parent;
+						printf("\n(%d,%d)->%c\n\n", nodes[i].x, nodes[i].y, nodes[i].c);
+						seeking = false;
+						break;
+					}
+				}
+			}
+			//seeking = false;
+		}
 		printf("\nExit node: (%d, %d)\n", exit_loc.x, exit_loc.y);
 
         player.x = start->x;
