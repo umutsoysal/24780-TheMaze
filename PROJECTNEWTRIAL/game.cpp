@@ -50,7 +50,12 @@ bool game::run()
 	player.MakeCurrent();
 	player.Start();
 	YsSoundPlayer::SoundData wav;
-	if (YSOK != wav.LoadWav("background.wav"))
+	//Of course our background music was created by someone else
+	//And we are using it under	an Attribution License
+	//The author calls himself TheDweebMan, and the file can 
+	//be downloaded from:
+	//https://freesound.org/people/TheDweebMan/sounds/277192/
+	if (YSOK != wav.LoadWav("background.wav")) 
 	{
 		printf("Error -> Cannot load!\n");
 	//	return 1;
