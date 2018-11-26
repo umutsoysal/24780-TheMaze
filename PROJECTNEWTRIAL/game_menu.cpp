@@ -84,7 +84,6 @@ void RenderMenu(void *)
 }
 void RenderEndMenu(void *)
 {
-    //char myword[] = "Hello";
     std::string Something = "Some Text";
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glColor3ub(255,0,0);
@@ -98,27 +97,21 @@ void RenderEndMenu(void *)
     glColor3ub(0,0,0);
     glColor3ub(0,0,255);
     glColor3ub(0,0,0);
-    glRasterPos2d(32,148);
-    YsGlDrawFontBitmap32x48("24780 PROJECT: THE MAZE");
-    glRasterPos2d(182,292);
-    YsGlDrawFontBitmap20x32("S.....START");
-    glRasterPos2d(182,336);
+    glRasterPos2d(260,168);
+    YsGlDrawFontBitmap32x48("TIME IS UP");
+    glRasterPos2d(270,292);
+    YsGlDrawFontBitmap20x32("RETRY");
+    glRasterPos2d(270,336);
     YsGlDrawFontBitmap20x32("ESC...QUIT");
     
     FsSwapBuffers();
 }
 void RenderNextGameMenu(void *)
 {
-    //char integer_string[32];
-    
-    //int integer = 1234;
-    //sprintf(integer_string, "%d", integer);
-    
-    //strcat(myword, integer_string);
-    //strcat(myword, myword1);
+
     std::string Something = "Some Text";
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-    glColor3ub(0,100,255);
+    glColor3ub(0,100,0);
     glBegin(GL_QUADS);
     glVertex2i(0, 0);
     glVertex2i(0, 600);
@@ -126,16 +119,44 @@ void RenderNextGameMenu(void *)
     glVertex2i(800, 0);
     glEnd();
     //glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-    glColor3ub(0,0,255);
-    glRasterPos2d(32,148);
+    glColor3ub(0,0,0);
+    glRasterPos2d(260,168);
     YsGlDrawFontBitmap32x48("YOU WON");
-    glRasterPos2d(182,286);
+    glRasterPos2d(270,286);
     YsGlDrawFontBitmap20x32("CONTINUE ?");
-    glRasterPos2d(182,336);
+    glRasterPos2d(270,336);
+    YsGlDrawFontBitmap20x32("ESC...QUIT");
+    FsSwapBuffers();
+
+}
+
+void RenderPauseGameMenu(void *)
+{
+    std::string Something = "Some Text";
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glColor3ub(100,100,0);
+    glBegin(GL_QUADS);
+    glVertex2i(0, 0);
+    glVertex2i(0, 600);
+    glVertex2i(800, 600);
+    glVertex2i(800, 0);
+    glEnd();
+    //glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glColor3ub(0,0,0);
+    glRasterPos2d(260,168);
+    YsGlDrawFontBitmap32x48("PAUSE");
+    glRasterPos2d(270,286);
+    YsGlDrawFontBitmap20x32("CONTINUE");
+    glRasterPos2d(270,336);
     YsGlDrawFontBitmap20x32("ESC...QUIT");
     FsSwapBuffers();
     
 }
+
+
+
+
+
 
 void GameMenu::Run(void)
 {
@@ -217,6 +238,38 @@ void NextGameMenu::CleanUp(void)
 {
     duration=0;
 }
+
+
+void PauseGameMenu::Run(void)
+{
+    FsRegisterOnPaintCallBack(RenderPauseGameMenu,nullptr);
+    for(;;)
+    {
+        FsPollDevice();
+        lastKey=FsInkey();
+        
+        if(FSKEY_ESC==lastKey || FSKEY_S==lastKey)
+        {
+            break;
+        }
+        FsPushOnPaintEvent();
+        FsSleep(10);
+    }
+}
+PauseGameMenu::PauseGameMenu()
+{
+    duration=0;
+}
+PauseGameMenu::~PauseGameMenu()
+{
+    CleanUp();
+}
+
+void PauseGameMenu::CleanUp(void)
+{
+    duration=0;
+}
+
 
 
 

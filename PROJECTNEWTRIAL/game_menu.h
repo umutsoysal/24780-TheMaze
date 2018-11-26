@@ -48,6 +48,16 @@ public:
     void CleanUp(void);
 };
 
+class PauseGameMenu
+{
+public:
+    int lastKey;
+    double duration;
+    void Run(void);
+    PauseGameMenu();   // Constructor
+    ~PauseGameMenu();  // Destructor
+    void CleanUp(void);
+};
 
 
 /*

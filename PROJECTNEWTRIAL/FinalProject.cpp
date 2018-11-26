@@ -14,7 +14,6 @@
 #include "game_menu.h"
 #include "ysglfontdata.h"
 
-
 int main(void)
 {
     // Load historical data file, if it exists
@@ -40,6 +39,7 @@ int main(void)
     GameMenu menu;
     EndGameMenu endmenu;
     NextGameMenu nextmenu;
+    PauseGameMenu pausemenu;
     srand(time(nullptr));
     
     for(;;) //EXPERIMENTAL
@@ -55,11 +55,12 @@ int main(void)
             {
                 game new_game(level,timer);
                 bool finished = new_game.run();
+                bool abort_game=new_game.is_abort;
                 double timespentingame = new_game.get_timer();
                 const double ttime=timespentingame;
-                nextmenu.Run();
                 if (finished == true)
                 {
+                    nextmenu.Run();
                     if(FSKEY_ESC==nextmenu.lastKey)
                     {
                         break; //Terminate the program
@@ -74,8 +75,31 @@ int main(void)
                 }
                 else if (finished == false)
                 {
-					timer += 2;
-					endmenu.Run();
+                    printf("%d",abort_game);
+                    if (abort_game == true)
+                    {
+                        abort_game=false;
+                        pausemenu.Run();
+                        if(FSKEY_ESC==pausemenu.lastKey)
+                        {
+                            break; //Terminate the program
+                        }
+                        else if(FSKEY_S==pausemenu.lastKey)
+                        {
+                        }
+                    }else
+                    {
+                        timer += 2;
+                        endmenu.Run();
+                        if(FSKEY_ESC==endmenu.lastKey)
+                        {
+                            break; //Terminate the program
+                        }
+                        else if(FSKEY_S==endmenu.lastKey)
+                        {
+                        }
+                    }
+                
                 }
             }
         }

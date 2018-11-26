@@ -7,6 +7,7 @@ private:
 	RenderMaze screen;
 	
 public:
+    bool is_abort;
 	int level;
 	double difficulty;
 	game(void);

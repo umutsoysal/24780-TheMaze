@@ -40,7 +40,8 @@ game::game(int l, double t) //
 	y_size = y_size + (y_size + 1) % 2;
     
     screen.initialize(x_size, y_size, f_scale, t, l);
-
+    
+    is_abort=false;
 }
 bool game::run()
 {
@@ -77,6 +78,7 @@ bool game::run()
                 printf("Current map is ended!");
             }
             terminate = true;
+            //is_abort = true;
             //break;
         }
         FsPollDevice();
@@ -85,6 +87,7 @@ bool game::run()
         {
         case FSKEY_ESC:
             terminate = true;
+            is_abort = true;
             break;
         default:
             screen.MovePlayer(key);
