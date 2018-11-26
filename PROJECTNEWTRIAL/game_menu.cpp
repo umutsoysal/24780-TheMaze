@@ -19,8 +19,15 @@ void RenderMenu(void *)
 {
     std::string Something = "Some Text";
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-    
     glColor3ub(255,0,0);
+    glBegin(GL_QUADS);
+    glVertex2i(0, 0);
+    glVertex2i(0, 600);
+    glVertex2i(800, 600);
+    glVertex2i(800, 0);
+    glEnd();
+    //glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glColor3ub(0,0,0);
     glRasterPos2d(32,148);
     YsGlDrawFontBitmap32x48("24780 PROJECT: THE MAZE");
     glRasterPos2d(32,172);
@@ -32,7 +39,17 @@ void RenderMenu(void *)
 void RenderEndMenu(void *)
 {
     char myword[] = "Hello";
+    std::string Something = "Some Text";
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glColor3ub(255,0,0);
+    glBegin(GL_QUADS);
+    glVertex2i(0, 0);
+    glVertex2i(0, 600);
+    glVertex2i(800, 600);
+    glVertex2i(800, 0);
+    glEnd();
+    //glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glColor3ub(0,0,0);
     glColor3ub(0,0,255);
     glRasterPos2d(32,48);
     YsGlDrawFontBitmap16x24(myword);
@@ -53,7 +70,16 @@ void RenderNextGameMenu(void *)
     char myword1[] = " seconds";
     strcat(myword, integer_string);
     strcat(myword, myword1);
+    std::string Something = "Some Text";
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glColor3ub(255,0,0);
+    glBegin(GL_QUADS);
+    glVertex2i(0, 0);
+    glVertex2i(0, 600);
+    glVertex2i(800, 600);
+    glVertex2i(800, 0);
+    glEnd();
+    //glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glColor3ub(0,0,255);
     glRasterPos2d(32,48);
     YsGlDrawFontBitmap16x24(myword);
