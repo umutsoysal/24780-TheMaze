@@ -34,18 +34,20 @@ RenderMaze::RenderMaze(void)
 	is_done = false;
 	is_won = false;
 }
-RenderMaze::RenderMaze(const int w, const int h, const int f, const int time)
+RenderMaze::RenderMaze(const int w, const int h, const int f, const int t, const int l)
 {
     //CleanUp();
 	RenderMaze();
-    initialize(w, h, f, time);
+    initialize(w, h, f, t, l);
 }
-void RenderMaze::initialize(const int w, const int h, const int f, const int time)
+void RenderMaze::initialize(const int w, const int h, const int f, const int t, const int l)
 {
     //CleanUp();
     width = w;
     height = h;
     scale = f;
+	time = t;
+	level = l;
 	camera.x = 300;
 	camera.y = 200;
     initialize();
@@ -356,7 +358,7 @@ void RenderMaze::MovePlayer(const char direction)
 		case FSKEY_RIGHT:
 			if (use_3d)
 			{
-				printf("\n(%d->%d)", M.player.x, (double)width / 2);
+				//printf("\n(%d->%d)", M.player.x, (double)width / 2);
 				if (M.player.x > (double)width/ 2)
 				{
 					panRight();
@@ -422,8 +424,9 @@ void RenderMaze::Render(void)
 
 	glShadeModel(GL_SMOOTH);
 	glColor3ub(230, 25, 25);
-	glRasterPos2d(600, 580);
-	YsGlDrawFontBitmap10x14("The Maze v.0.0.1");
+	glRasterPos2d(wid - 200, hei - 20);
+	std::string bar_version = "The Maze v.0.0.1.";
+	YsGlDrawFontBitmap10x14(bar_version.c_str());
 
 	glColor4ub(100, 100, 100, 255);
 	glBegin(GL_QUADS);
@@ -435,15 +438,21 @@ void RenderMaze::Render(void)
 
 	glColor3ub(200, 200, 200);
 	glRasterPos2d(20, 17);
-	//YsGlDrawFontBitmap10x14("The Maze. Level 1-----------------------------------------------------");
-	//char str[] = "The Maze. Level 1-----------------------------------------------------";
-	auto end = std::chrono::system_clock::now();
-	double passed = time - std::chrono::duration_cast <std::chrono::milliseconds> (end - start_time).count();
-	std::string str = to_string(passed/1000);
-	YsGlDrawFontBitmapDirect(str.c_str(), YsFont10x14, 10, 14);
-	//glRasterPos2d(20, 20);
-	//YsGlDrawFontBitmap10x14
+	YsGlDrawFontBitmap10x14(bar_version.c_str());
 
-	//FsSwapBuffers();
+	glRasterPos2d((int)wid/2 - 20, 17);
+	std::string bar_level = "Level ";
+	bar_level.append(to_string(level));
+	YsGlDrawFontBitmap10x14(bar_level.c_str());
+
+	glRasterPos2d(wid - 220, 17);
+	std::string bar_timer = "Time left: ";
+	auto end = std::chrono::system_clock::now();
+	double passed = std::chrono::duration_cast <std::chrono::milliseconds> (end - start_time).count();
+	std::string time_str = to_string(time - passed/1000);
+	bar_timer.append(time_str);
+	bar_timer.append(" s");
+	YsGlDrawFontBitmapDirect(bar_timer.c_str(), YsFont10x14, 10, 14);
+
 }
 

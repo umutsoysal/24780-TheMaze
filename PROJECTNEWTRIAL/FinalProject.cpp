@@ -50,7 +50,7 @@ int main(void)
         }
         else if(FSKEY_S==menu.lastKey)
         {
-			game new_game;
+			game new_game(10,300);
             bool finished = new_game.run();
             double timespentingame = new_game.get_timer();
             const double ttime=timespentingame;

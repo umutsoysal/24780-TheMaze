@@ -10,7 +10,7 @@ public:
 	int level;
 	double difficulty;
 	game(void);
-	game(int l, int t);
+	game(int l, double t);
 	bool run(void);
 	double get_timer(void);
 };

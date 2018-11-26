@@ -12,7 +12,8 @@ class RenderMaze
 private:
     maze M;
     int width, height, scale;
-	int time;
+	int level; //Level for the game. For rendering purposes only. Complexity is already defined.
+	double time;
 	double side; //Refers to width of each 3d object. 
 	bool use_3d;
 	void panUp(void);
@@ -26,11 +27,11 @@ public:
 	bool is_won;
 	CameraObject camera;
     RenderMaze(void);
-    RenderMaze(const int w, const int h, const int f, const int time);
+    RenderMaze(const int w, const int h, const int f, const int t, const int l);
     ~RenderMaze(void);
     void CleanUp(void);
     void initialize(void);
-    void initialize(const int w, const int h, const int f, const int time);
+    void initialize(const int w, const int h, const int f, const int t, const int l);
     void MovePlayer(const char direction);
     void DrawMap(void);
 	void Draw3DMap(void);
