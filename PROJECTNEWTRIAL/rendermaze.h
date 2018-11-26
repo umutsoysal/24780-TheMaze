@@ -40,6 +40,7 @@ public:
 	void DrawPixel(const Node element, const int colors[3], bool simple = true);
     void DrawPlayer(void);
 	void Render(void);
+	double get_timer(void);
 };
 
 #endif

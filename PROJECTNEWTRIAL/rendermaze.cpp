@@ -460,4 +460,8 @@ void RenderMaze::Render(void)
     YsGlDrawFontBitmapDirect(bar_timer.c_str(), YsFont10x14, 10, 14);
 
 }
-
+double RenderMaze::get_timer(void) 
+{
+	double final_time = std::chrono::duration_cast <std::chrono::milliseconds> (stop_time - start_time).count() / 1000;
+	return final_time;
+}
