@@ -15,8 +15,6 @@
 #include "ysglfontdata.h"
 
 
-
-
 int main(void)
 {
     // Load historical data file, if it exists
@@ -54,6 +52,8 @@ int main(void)
         {
 			game new_game;
             bool finished = new_game.run();
+            double timespentingame = new_game.get_timer();
+            const double ttime=timespentingame;
             //break;
         }
         if (finished==true)
@@ -62,8 +62,6 @@ int main(void)
         }
         if (finished==false)
         {
-            endmenu.duration=start-end;
-            const int gameduration=start-end;
             endmenu.Run();
         }
     }
@@ -77,7 +75,7 @@ int main(void)
     //FsOpenWindow(16, 16, x_size*f_scale, y_size*f_scale, 1, "24780 Final Project: The Maze");
 	 printf("Just another test");
 	
-
+    
     //printf("Duration is %d seconds",duration);
     return 0;
 }
