@@ -29,6 +29,7 @@ int main(void)
     //        Monitor keyboard inputs for movement and queue movement sounds
     int counter;
     int duration;
+    int level = 0;
     bool finished;
     time_t start, end;
     
@@ -50,20 +51,21 @@ int main(void)
         }
         else if(FSKEY_S==menu.lastKey)
         {
-			game new_game;
+            game new_game(level,300);
             bool finished = new_game.run();
             double timespentingame = new_game.get_timer();
             const double ttime=timespentingame;
-            //break;
+            if (finished == true)
+            {
+                level += 1;
+                nextmenu.Run();
+            }
+            if (finished == false)
+            {
+                endmenu.Run();
+            }
         }
-        if (finished==true)
-        {
-            nextmenu.Run();
-        }
-        if (finished==false)
-        {
-            endmenu.Run();
-        }
+        
     }
     printf("ESCAPED FROM MENU?");
     FsCloseWindow;
@@ -73,8 +75,8 @@ int main(void)
     
     // US: I suspended it so the screen will be same dimensions each time.
     //FsOpenWindow(16, 16, x_size*f_scale, y_size*f_scale, 1, "24780 Final Project: The Maze");
-	 printf("Just another test");
-	
+     printf("Just another test");
+    
     
     //printf("Duration is %d seconds",duration);
     return 0;

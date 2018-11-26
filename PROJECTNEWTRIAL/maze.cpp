@@ -146,7 +146,7 @@ Node *maze::link(Node *n)
 }
 void maze::generate(void)
 {
-	// Here we generate a map by running a binary tree
+    // Here we generate a map by running a binary tree
     Node *start, *last;
     if (nodes != nullptr)
     {
@@ -158,37 +158,37 @@ void maze::generate(void)
         //Connect nodes until start node is reached and can't be left
         while ((last = link(last)) != start);
         //nodes[start->y*width + start->x].c = entry;
-		entry_loc.c = entry;
-		entry_loc.x = start->x;
-		entry_loc.y = start->y;
-		entry_loc.parent = start->parent;
+        entry_loc.c = entry;
+        entry_loc.x = start->x;
+        entry_loc.y = start->y;
+        entry_loc.parent = start->parent;
         //nodes[(width-1)*(height-1)].c = exit;
-		bool seeking = true;
-		while (seeking == true)
-		{
-			for (int i = 0; i < width*height; ++i)
-			{
-				//Node candidate = nodes[i];
-				if (nodes[i].x != entry_loc.x && nodes[i].y != entry_loc.y && nodes[i].c == '0')
-				{
-					if (nodes[i].x > 0 && nodes[i].y > 0)
-					{
-						exit_loc.x = nodes[i].x; //(width - 1)*(height - 1)
-						exit_loc.y = nodes[i].y;
-						exit_loc.parent = nodes[i].parent;
-						//printf("\n(%d,%d)->%c\n\n", nodes[i].x, nodes[i].y, nodes[i].c);
-						seeking = false;
-						break;
-					}
-				}
-			}
-			//seeking = false;
-		}
-		printf("\nExit node: (%d, %d)\n", exit_loc.x, exit_loc.y);
+        bool seeking = true;
+        while (seeking == true)
+        {
+            for (int i = 0; i < width*height; ++i)
+            {
+                //Node candidate = nodes[i];
+                if (nodes[i].x != entry_loc.x && nodes[i].y != entry_loc.y && nodes[i].c == '0')
+                {
+                    if (nodes[i].x > 0 && nodes[i].y > 0)
+                    {
+                        exit_loc.x = nodes[i].x; //(width - 1)*(height - 1)
+                        exit_loc.y = nodes[i].y;
+                        exit_loc.parent = nodes[i].parent;
+                        //printf("\n(%d,%d)->%c\n\n", nodes[i].x, nodes[i].y, nodes[i].c);
+                        seeking = false;
+                        //break;
+                    }
+                }
+            }
+            //seeking = false;
+        }
+        printf("\nExit node: (%d, %d)\n", exit_loc.x, exit_loc.y);
 
         player.x = start->x;
         player.y = start->y;
-		player.parent = start->parent;
+        player.parent = start->parent;
         player.c = '*';
         
     }
@@ -269,7 +269,7 @@ void maze::PrintToTerminal()
         {
             
             printf("%c", nodes[j + i * width].c);
-			printf("(%d,%d)", nodes[j + i * width].x, nodes[j + i * width].y);
+            printf("(%d,%d)", nodes[j + i * width].x, nodes[j + i * width].y);
         }
         printf("\n\n");
     }
