@@ -1,9 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <chrono>
+#include <time.h>
+#include <string>
+#include <sstream>
 #include "fssimplewindow.h"
 #include "rendermaze.h"
 #include "ysglfontdata.h"
+
+std::string to_string(double x) // This one is from the internet.
+{
+	std::ostringstream ss;
+	ss << x;
+	return ss.str();
+}
 
 RenderMaze::RenderMaze(void)
 {
@@ -18,17 +29,18 @@ RenderMaze::RenderMaze(void)
 	camera.nearZ = 1.0f;
 	camera.farZ = 5000000;
 	side = 50;
+	time = 300;
 	use_3d = false;
 	is_done = false;
 	is_won = false;
 }
-RenderMaze::RenderMaze(const int w, const int h, const int f)
+RenderMaze::RenderMaze(const int w, const int h, const int f, const int time)
 {
     //CleanUp();
 	RenderMaze();
-    initialize(w, h, f);
+    initialize(w, h, f, time);
 }
-void RenderMaze::initialize(const int w, const int h, const int f)
+void RenderMaze::initialize(const int w, const int h, const int f, const int time)
 {
     //CleanUp();
     width = w;
@@ -47,7 +59,8 @@ void RenderMaze::initialize(void)
         exit(1);
     }
     M.generate();
-    M.PrintToTerminal();
+	timer_start(); // Starts the timer 
+    //M.PrintToTerminal();
 }
 void RenderMaze::CleanUp(void)
 {
@@ -368,6 +381,10 @@ void RenderMaze::MovePlayer(const char direction)
 		}
 	}
 }
+void RenderMaze::timer_start()
+{
+	start_time = std::chrono::system_clock::now();
+}
 void RenderMaze::Render(void)
 {
 	//glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
@@ -407,6 +424,25 @@ void RenderMaze::Render(void)
 	glColor3ub(230, 25, 25);
 	glRasterPos2d(600, 580);
 	YsGlDrawFontBitmap10x14("The Maze v.0.0.1");
+
+	glColor4ub(100, 100, 100, 255);
+	glBegin(GL_QUADS);
+	glVertex2i(0, 0);
+	glVertex2i(0, 20);
+	glVertex2i(wid, 20);
+	glVertex2i(wid, 0);
+	glEnd();
+
+	glColor3ub(200, 200, 200);
+	glRasterPos2d(20, 17);
+	//YsGlDrawFontBitmap10x14("The Maze. Level 1-----------------------------------------------------");
+	//char str[] = "The Maze. Level 1-----------------------------------------------------";
+	auto end = std::chrono::system_clock::now();
+	double passed = time - std::chrono::duration_cast <std::chrono::milliseconds> (end - start_time).count();
+	std::string str = to_string(passed/1000);
+	YsGlDrawFontBitmapDirect(str.c_str(), YsFont10x14, 10, 14);
+	//glRasterPos2d(20, 20);
+	//YsGlDrawFontBitmap10x14
 
 	//FsSwapBuffers();
 }

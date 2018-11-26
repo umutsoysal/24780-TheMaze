@@ -1,5 +1,4 @@
-
-
+#include <chrono>
 #include "maze.h"
 #include "framework3d.h"
 
@@ -13,22 +12,25 @@ class RenderMaze
 private:
     maze M;
     int width, height, scale;
+	int time;
 	double side; //Refers to width of each 3d object. 
 	bool use_3d;
 	void panUp(void);
 	void panDown(void);
 	void panLeft(void);
 	void panRight(void);
+	decltype(std::chrono::system_clock::now()) start_time;
+	void timer_start(void);
 public:
 	bool is_done;
 	bool is_won;
 	CameraObject camera;
     RenderMaze(void);
-    RenderMaze(const int w, const int h, const int f);
+    RenderMaze(const int w, const int h, const int f, const int time);
     ~RenderMaze(void);
     void CleanUp(void);
     void initialize(void);
-    void initialize(const int w, const int h, const int f);
+    void initialize(const int w, const int h, const int f, const int time);
     void MovePlayer(const char direction);
     void DrawMap(void);
 	void Draw3DMap(void);
