@@ -106,7 +106,7 @@ void RenderNextGameMenu(void *)
     glRasterPos2d(32,148);
     YsGlDrawFontBitmap32x48(myword);
     glRasterPos2d(182,286);
-    YsGlDrawFontBitmap20x32("S.....START");
+    YsGlDrawFontBitmap20x32("CONTINUE ?");
     glRasterPos2d(182,336);
     YsGlDrawFontBitmap20x32("ESC...QUIT");
     FsSwapBuffers();
