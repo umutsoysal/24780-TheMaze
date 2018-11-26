@@ -178,7 +178,7 @@ void maze::generate(void)
 						exit_loc.parent = nodes[i].parent;
 						//printf("\n(%d,%d)->%c\n\n", nodes[i].x, nodes[i].y, nodes[i].c);
 						seeking = false;
-						break;
+						//break;
 					}
 				}
 			}

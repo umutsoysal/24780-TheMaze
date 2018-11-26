@@ -15,6 +15,10 @@ private:
     int width, height, scale;
 	double side; //Refers to width of each 3d object. 
 	bool use_3d;
+	void panUp(void);
+	void panDown(void);
+	void panLeft(void);
+	void panRight(void);
 public:
 	bool is_done;
 	bool is_won;

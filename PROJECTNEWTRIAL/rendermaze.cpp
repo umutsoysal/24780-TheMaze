@@ -34,6 +34,8 @@ void RenderMaze::initialize(const int w, const int h, const int f)
     width = w;
     height = h;
     scale = f;
+	camera.x = 300;
+	camera.y = 200;
     initialize();
 }
 void RenderMaze::initialize(void)
@@ -90,6 +92,7 @@ void RenderMaze::Draw3DMap(void)
 	// 3D version of the same maze
 	int r, g, b, a;
 	side = scale/2;
+	int col_height = 0;
 	for (int y = 0; y < height; ++y)
 	{
 		for (int x = 0; x < width; ++x)
@@ -102,7 +105,7 @@ void RenderMaze::Draw3DMap(void)
 				g = 200;
 				b = 200;
 				a = 50;
-				height = 10;
+				col_height = 10;
 				break;
 			case '1':
 				//glColor3ub(0, 0, 0);
@@ -110,7 +113,7 @@ void RenderMaze::Draw3DMap(void)
 				g = 0;
 				b = 0;
 				a = 50;
-				height = 70;
+				col_height = 70;
 				break;
 			}
 
@@ -119,10 +122,10 @@ void RenderMaze::Draw3DMap(void)
 			glColor4ub(r, g, b, a);
 
 			//Front
-			glVertex3i(-side + scale*(x), -side + scale*(y), height);
-			glVertex3i(side + scale*(x), -side + scale*(y), height);
-			glVertex3i(side + scale*(x), side + scale*(y), height);
-			glVertex3i(-side + scale*(x), side + scale*(y), height);
+			glVertex3i(-side + scale*(x), -side + scale*(y), col_height);
+			glVertex3i(side + scale*(x), -side + scale*(y), col_height);
+			glVertex3i(side + scale*(x), side + scale*(y), col_height);
+			glVertex3i(-side + scale*(x), side + scale*(y), col_height);
 
 			r = (r + 15 > 255) ? r - 15 : r + 15;
 			g = (g + 15 > 255) ? g - 15 : g + 15;
@@ -138,26 +141,26 @@ void RenderMaze::Draw3DMap(void)
 			//Bottom
 			glVertex3i(-side + scale*(x), -side + scale*(y), -side);
 			glVertex3i(side + scale*(x), -side + scale*(y), -side);
-			glVertex3i(side + scale*(x), -side + scale*(y), height);
-			glVertex3i(-side + scale*(x), -side + scale*(y), height);
+			glVertex3i(side + scale*(x), -side + scale*(y), col_height);
+			glVertex3i(-side + scale*(x), -side + scale*(y), col_height);
 
 			//Top
 			glVertex3i(-side + scale*(x), side + scale*(y), -side);
 			glVertex3i(side + scale*(x), side + scale*(y), -side);
-			glVertex3i(side + scale*(x), side + scale*(y), height);
-			glVertex3i(-side + scale*(x), side + scale*(y), height);
+			glVertex3i(side + scale*(x), side + scale*(y), col_height);
+			glVertex3i(-side + scale*(x), side + scale*(y), col_height);
 
 			//Left
 			glVertex3i(-side + scale*(x), -side + scale*(y), -side);
 			glVertex3i(-side + scale*(x), side + scale*(y), -side);
-			glVertex3i(-side + scale*(x), side + scale*(y), height);
-			glVertex3i(-side + scale*(x), -side + scale*(y), height);
+			glVertex3i(-side + scale*(x), side + scale*(y), col_height);
+			glVertex3i(-side + scale*(x), -side + scale*(y), col_height);
 
 			//Right
 			glVertex3i(side + scale*(x), -side + scale*(y), -side);
 			glVertex3i(side + scale*(x), side + scale*(y), -side);
-			glVertex3i(side + scale*(x), side + scale*(y), height);
-			glVertex3i(side + scale*(x), -side + scale*(y), height);
+			glVertex3i(side + scale*(x), side + scale*(y), col_height);
+			glVertex3i(side + scale*(x), -side + scale*(y), col_height);
 
 			glEnd();
 		}
@@ -168,7 +171,6 @@ void RenderMaze::DrawPixel(const Node element, const int colors[3], bool simple)
 	
 	if (use_3d == true)
 	{
-		int subscale = 1;
 		double cx = element.x*scale; //0,0,0, 5, 36,18
 		double cy = element.y*scale;
 		double cz = 10 + (double)side/2;
@@ -202,27 +204,34 @@ void RenderMaze::DrawPixel(const Node element, const int colors[3], bool simple)
 				double y3 = cy + rad * sin(p1);
 				double z3 = cz + rad * cos(p1)*sin(h0);
 
-				if (0 != (i + j) % 2 && simple == false)
+				if (simple == false)
+				{
+					if (0 != (i + j) % 2)
+					{
+						glColor3f(colors[0], colors[1], colors[2]);
+					}
+					else
+					{
+						glColor3f(colors[2], colors[2], colors[2]);
+					}
+				}
+				else
 				{
 					glColor3f(colors[0], colors[1], colors[2]);
 				}
-				else
-				{
-					glColor3f(colors[2], colors[2], colors[2]);
-				}
 				if (simple == true)
 				{
-					glVertex3d(subscale*x0, subscale*y0, 11);
-					glVertex3d(subscale*x1, subscale*y1, 11);
-					glVertex3d(subscale*x2, subscale*y2, 11);
-					glVertex3d(subscale*x3, subscale*y3, 11);
+					glVertex3d(x0, y0, 11);
+					glVertex3d(x1, y1, 11);
+					glVertex3d(x2, y2, 11);
+					glVertex3d(x3, y3, 11);
 				}
 				else
 				{
-					glVertex3d(subscale*x0, subscale*y0, z0);
-					glVertex3d(subscale*x1, subscale*y1, z1);
-					glVertex3d(subscale*x2, subscale*y2, z2);
-					glVertex3d(subscale*x3, subscale*y3, z3);
+					glVertex3d(x0, y0, z0);
+					glVertex3d(x1, y1, z1);
+					glVertex3d(x2, y2, z2);
+					glVertex3d(x3, y3, z3);
 				}
 			}
 		}
@@ -252,6 +261,34 @@ void RenderMaze::DrawPlayer(void)
 	DrawPixel(M.entry_loc, entry_color, true);
 	DrawPixel(M.exit_loc, exit_color, true);
 }
+void RenderMaze::panUp(void)
+{
+	if (camera.y < (double)height*scale / 2)
+	{
+		camera.y += scale / 2;
+	}
+}
+void RenderMaze::panDown(void)
+{
+	if (camera.y > height*scale / 2 - 2 * side)
+	{
+		camera.y -= scale / 2;
+	}
+}
+void RenderMaze::panLeft(void)
+{
+	if (camera.x > (double)width*scale / 2 - 2 * side)
+	{
+		camera.x -= scale / 2;
+	}
+}
+void RenderMaze::panRight(void)
+{
+	if (camera.x < (double)width*scale / 2)
+	{
+		camera.x += scale / 2;
+	}
+}
 void RenderMaze::MovePlayer(const char direction)
 {
 	if (M.player.x == M.exit_loc.x && M.player.y == M.exit_loc.y)
@@ -266,6 +303,10 @@ void RenderMaze::MovePlayer(const char direction)
 		case FSKEY_UP:
 			if (use_3d)
 			{
+				if (M.player.y < (double)height*scale / 2)
+				{
+					panUp();
+				}
 				M.moveDown();
 			}
 			else
@@ -277,6 +318,10 @@ void RenderMaze::MovePlayer(const char direction)
 		case FSKEY_DOWN:
 			if (use_3d)
 			{
+				if (M.player.y > (double)height*scale / 2 - 2 * side)
+				{
+					panDown();
+				}
 				M.moveUp();
 			}
 			else
@@ -286,29 +331,36 @@ void RenderMaze::MovePlayer(const char direction)
 			
 			break;
 		case FSKEY_LEFT:
+			if (use_3d)
+			{
+				if (M.player.x < (double)width*scale / 2 - 2 * side)
+				{
+					panLeft();
+				}
+			}
 			M.moveLeft();
 			break;
 		case FSKEY_RIGHT:
+			if (use_3d)
+			{
+				if (M.player.x > (double)width*scale / 2)
+				{
+					panRight();
+				}
+			}
 			M.moveRight();
 			break;
 		case FSKEY_W:
-			if (camera.y < width*scale)
-			{
-				camera.y += scale / 2;
-				//camera.p += PI / 180.0;
-			}
+			panUp();
 			break;
 		case FSKEY_S:
-			camera.y -= scale / 2;
-			//camera.p -= PI / 180.0;
+			panDown();
 			break;
 		case FSKEY_A:
-			camera.x -= scale / 2;
-			//camera.h += PI / 180.0;
+			panLeft();
 			break;
 		case FSKEY_D:
-			camera.x += scale / 2;
-			//camera.h -= PI / 180.0;
+			panRight();
 			break;
 		case FSKEY_X:
 			break;
