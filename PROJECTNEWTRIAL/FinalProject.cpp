@@ -55,15 +55,16 @@ int main(void)
             double timespentingame = new_game.get_timer();
             const double ttime=timespentingame;
             //break;
+			if (finished == true)
+			{
+				nextmenu.Run();
+			}
+			if (finished == false)
+			{
+				endmenu.Run();
+			}
         }
-        if (finished==true)
-        {
-            nextmenu.Run();
-        }
-        if (finished==false)
-        {
-            endmenu.Run();
-        }
+        
     }
     printf("ESCAPED FROM MENU?");
     FsCloseWindow;

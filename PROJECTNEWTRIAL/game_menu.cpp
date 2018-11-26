@@ -50,9 +50,9 @@ void RenderNextGameMenu(void *)
     sprintf(integer_string, "%d", integer);
     
     char myword[] = "YOU WON! ";
-    char myword1[] = " seconds";
-    strcat(myword, integer_string);
-    strcat(myword, myword1);
+    //char myword1[] = " seconds";
+    //strcat(myword, integer_string);
+    //strcat(myword, myword1);
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glColor3ub(0,0,255);
     glRasterPos2d(32,48);
