@@ -84,7 +84,7 @@ void RenderMenu(void *)
 }
 void RenderEndMenu(void *)
 {
-    char myword[] = "Hello";
+    //char myword[] = "Hello";
     std::string Something = "Some Text";
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glColor3ub(255,0,0);
@@ -109,15 +109,13 @@ void RenderEndMenu(void *)
 }
 void RenderNextGameMenu(void *)
 {
-    char integer_string[32];
+    //char integer_string[32];
     
-    int integer = 1234;
-    sprintf(integer_string, "%d", integer);
+    //int integer = 1234;
+    //sprintf(integer_string, "%d", integer);
     
-    char myword[] = "YOU WON! ";
-    char myword1[] = " seconds";
-    strcat(myword, integer_string);
-    strcat(myword, myword1);
+    //strcat(myword, integer_string);
+    //strcat(myword, myword1);
     std::string Something = "Some Text";
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glColor3ub(0,100,255);
@@ -130,7 +128,7 @@ void RenderNextGameMenu(void *)
     //glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glColor3ub(0,0,255);
     glRasterPos2d(32,148);
-    YsGlDrawFontBitmap32x48(myword);
+    YsGlDrawFontBitmap32x48("YOU WON");
     glRasterPos2d(182,286);
     YsGlDrawFontBitmap20x32("CONTINUE ?");
     glRasterPos2d(182,336);
