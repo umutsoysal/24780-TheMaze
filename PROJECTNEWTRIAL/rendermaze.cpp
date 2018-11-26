@@ -460,7 +460,7 @@ void RenderMaze::Render(void)
 	bar_timer.append(" s");
 	YsGlDrawFontBitmapDirect(bar_timer.c_str(), YsFont10x14, 10, 14);
 
-	if (count_down <= 0)
+	if (count_down <= 0.1)
 	{
 		is_done = true;
 	}
