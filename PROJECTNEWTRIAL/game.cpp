@@ -22,12 +22,19 @@ void RenderGame(void *incoming)
 
     FsSwapBuffers();
 }
-
-game::game()
+//game::game(void)
+//{
+//	game(50, 300);
+//}
+game::game() //int level, int time
 {
-    int x_size = 15; //79 //16
-    int y_size = 11; //59 //12
-    int f_scale = 50; //10
+	int wid, hei;
+	FsGetWindowSize(wid, hei);
+	int level = 10;
+	int f_scale = 2*level; //10
+    int x_size = (int) wid / f_scale - 1; //79 //16
+    int y_size = (int) hei / f_scale - 1; //59 //12
+    
     screen.initialize(x_size, y_size, f_scale);
 
 }

@@ -263,28 +263,28 @@ void RenderMaze::DrawPlayer(void)
 }
 void RenderMaze::panUp(void)
 {
-	if (camera.y < (double)height*scale / 2)
+	if (camera.y < (double)height*scale / 2 +  side * scale / 2)
 	{
 		camera.y += scale / 2;
 	}
 }
 void RenderMaze::panDown(void)
 {
-	if (camera.y > height*scale / 2 - 2 * side)
+	if (camera.y > height*scale / 2 - side * scale / 2)
 	{
 		camera.y -= scale / 2;
 	}
 }
 void RenderMaze::panLeft(void)
 {
-	if (camera.x > (double)width*scale / 2 - 2 * side)
+	if (camera.x > (double)width*scale / 2 - side * scale / 2) // 
 	{
 		camera.x -= scale / 2;
 	}
 }
 void RenderMaze::panRight(void)
 {
-	if (camera.x < (double)width*scale / 2)
+	if (camera.x < (double)width*scale / 2 + side * scale / 2)
 	{
 		camera.x += scale / 2;
 	}
@@ -303,7 +303,7 @@ void RenderMaze::MovePlayer(const char direction)
 		case FSKEY_UP:
 			if (use_3d)
 			{
-				if (M.player.y < (double)height*scale / 2)
+				if (M.player.y > (double)height / 2)
 				{
 					panUp();
 				}
@@ -318,7 +318,7 @@ void RenderMaze::MovePlayer(const char direction)
 		case FSKEY_DOWN:
 			if (use_3d)
 			{
-				if (M.player.y > (double)height*scale / 2 - 2 * side)
+				if (M.player.y < (double)height / 2) // - 2 * side
 				{
 					panDown();
 				}
@@ -333,7 +333,7 @@ void RenderMaze::MovePlayer(const char direction)
 		case FSKEY_LEFT:
 			if (use_3d)
 			{
-				if (M.player.x < (double)width*scale / 2 - 2 * side)
+				if (M.player.x < (double)width / 2)
 				{
 					panLeft();
 				}
@@ -343,7 +343,8 @@ void RenderMaze::MovePlayer(const char direction)
 		case FSKEY_RIGHT:
 			if (use_3d)
 			{
-				if (M.player.x > (double)width*scale / 2)
+				printf("\n(%d->%d)", M.player.x, (double)width / 2);
+				if (M.player.x > (double)width/ 2)
 				{
 					panRight();
 				}
