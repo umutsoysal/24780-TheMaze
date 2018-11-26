@@ -65,19 +65,16 @@ int main(void)
                 endmenu.Run();
             }
         }
-        
     }
-    printf("ESCAPED FROM MENU?");
     FsCloseWindow;
     time(&start);
     FsChangeToProgramDir();
-    
     
     // US: I suspended it so the screen will be same dimensions each time.
     //FsOpenWindow(16, 16, x_size*f_scale, y_size*f_scale, 1, "24780 Final Project: The Maze");
      printf("Just another test");
     
-    
+
     //printf("Duration is %d seconds",duration);
     return 0;
 }

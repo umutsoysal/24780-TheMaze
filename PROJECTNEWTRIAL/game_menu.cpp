@@ -19,9 +19,15 @@
 //TEST NEW COMMENT LINE
 void RenderMenu(void *)
 {
+    
+    int x1=360;
+    int y1=400;
+    int h=160;
+    int l=90;
+    
     std::string Something = "Some Text";
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-    glColor3ub(255,0,0);
+    glColor3ub(100,0,0);
     glBegin(GL_QUADS);
     glVertex2i(0, 0);
     glVertex2i(0, 600);
@@ -30,13 +36,32 @@ void RenderMenu(void *)
     glEnd();
     //glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glColor3ub(0,0,0);
-    glRasterPos2d(32,148);
-    YsGlDrawFontBitmap32x48("24780 PROJECT: THE MAZE");
-    glRasterPos2d(182,292);
+    glRasterPos2d(260,168);
+    YsGlDrawFontBitmap32x48("THE MAZE");
+    glRasterPos2d(270,292);
     YsGlDrawFontBitmap20x32("S.....START");
-    glRasterPos2d(182,336);
+    glRasterPos2d(270,336);
     YsGlDrawFontBitmap20x32("ESC...QUIT");
-
+    glColor3ub(0,0,0);
+    glBegin(GL_QUADS);
+    glVertex2i(x1, y1);
+    glVertex2i(x1, y1+h);
+    glVertex2i(x1+l, y1+h);
+    glVertex2i(x1+l, y1);
+    glEnd();
+    
+    glColor3ub(255,255,255);
+    glRasterPos2d(x1+l/2,y1+h/2);
+    YsGlDrawFontBitmap20x32("?");
+    
+    glColor3ub(0,50,0);
+    glBegin(GL_QUADS);
+    glVertex2i(x1, y1);
+    glVertex2i(x1+l/2, y1-(h/10));
+    glVertex2i(x1+l/2, y1+h+h/10);
+    glVertex2i(x1, y1+h);
+    glEnd();
+    
     /*
     YsRawPngDecoder png1, png2, png3, png4;
     png1.Decode("PSYCHEDELIC-1.png");
