@@ -454,11 +454,16 @@ void RenderMaze::Render(void)
 	std::string bar_timer = "Time left: ";
 	auto end = std::chrono::system_clock::now();
 	double passed = std::chrono::duration_cast <std::chrono::milliseconds> (end - start_time).count();
-	std::string time_str = to_string(time - passed/1000);
+	double count_down = time - passed / 1000;
+	std::string time_str = to_string(count_down);
 	bar_timer.append(time_str);
 	bar_timer.append(" s");
 	YsGlDrawFontBitmapDirect(bar_timer.c_str(), YsFont10x14, 10, 14);
 
+	if (count_down <= 0)
+	{
+		is_done = true;
+	}
 }
 double RenderMaze::get_timer(void) 
 {
