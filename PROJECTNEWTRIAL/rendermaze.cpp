@@ -394,74 +394,79 @@ void RenderMaze::timer_stop()
 }
 void RenderMaze::Render(void)
 {
-    //glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+	//glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
-    int wid, hei;
-    FsGetWindowSize(wid, hei);
+	int wid, hei;
+	FsGetWindowSize(wid, hei);
 
-    glViewport(0, 0, wid, hei);
+	glViewport(0, 0, wid, hei);
 
-    // Set up 3D drawing
-    camera.SetUpCameraProjection();
-    camera.SetUpCameraTransformation();
+	// Set up 3D drawing
+	camera.SetUpCameraProjection();
+	camera.SetUpCameraTransformation();
 
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_POLYGON_OFFSET_FILL);
-    glPolygonOffset(1, 1);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_POLYGON_OFFSET_FILL);
+	glPolygonOffset(1, 1);
 
 
-    // 3D drawing from here
-    use_3d = true;
-    Draw3DMap();
-    DrawPlayer();
+	// 3D drawing from here
+	use_3d = true;
+	Draw3DMap();
+	DrawPlayer();
 
-    // Set up 2D drawing
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(0, (float)wid - 1, (float)hei - 1, 0, -1, 1);
+	// Set up 2D drawing
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(0, (float)wid - 1, (float)hei - 1, 0, -1, 1);
 
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 
-    glDisable(GL_DEPTH_TEST);
+	glDisable(GL_DEPTH_TEST);
 
-    // 2D drawing from here
+	// 2D drawing from here
 
-    glShadeModel(GL_SMOOTH);
-    glColor3ub(230, 25, 25);
-    glRasterPos2d(wid - 200, hei - 20);
-    std::string bar_version = "The Maze v.0.0.1.";
-    YsGlDrawFontBitmap10x14(bar_version.c_str());
+	glShadeModel(GL_SMOOTH);
+	glColor3ub(230, 25, 25);
+	glRasterPos2d(wid - 200, hei - 20);
+	std::string bar_version = "The Maze v.0.0.1.";
+	YsGlDrawFontBitmap10x14(bar_version.c_str());
 
-    glColor4ub(100, 100, 100, 255);
-    glBegin(GL_QUADS);
-    glVertex2i(0, 0);
-    glVertex2i(0, 20);
-    glVertex2i(wid, 20);
-    glVertex2i(wid, 0);
-    glEnd();
+	glColor4ub(100, 100, 100, 255);
+	glBegin(GL_QUADS);
+	glVertex2i(0, 0);
+	glVertex2i(0, 20);
+	glVertex2i(wid, 20);
+	glVertex2i(wid, 0);
+	glEnd();
 
-    glColor3ub(200, 200, 200);
-    glRasterPos2d(20, 17);
-    YsGlDrawFontBitmap10x14(bar_version.c_str());
+	glColor3ub(200, 200, 200);
+	glRasterPos2d(20, 17);
+	YsGlDrawFontBitmap10x14(bar_version.c_str());
 
-    glRasterPos2d((int)wid/2 - 20, 17);
-    std::string bar_level = "Level ";
-    bar_level.append(to_string(level));
-    YsGlDrawFontBitmap10x14(bar_level.c_str());
+	glRasterPos2d((int)wid/2 - 20, 17);
+	std::string bar_level = "Level ";
+	bar_level.append(to_string(level));
+	YsGlDrawFontBitmap10x14(bar_level.c_str());
 
-    glRasterPos2d(wid - 220, 17);
-    std::string bar_timer = "Time left: ";
-    auto end = std::chrono::system_clock::now();
-    double passed = std::chrono::duration_cast <std::chrono::milliseconds> (end - start_time).count();
-    std::string time_str = to_string(time - passed/1000);
-    bar_timer.append(time_str);
-    bar_timer.append(" s");
-    YsGlDrawFontBitmapDirect(bar_timer.c_str(), YsFont10x14, 10, 14);
+	glRasterPos2d(wid - 220, 17);
+	std::string bar_timer = "Time left: ";
+	auto end = std::chrono::system_clock::now();
+	double passed = std::chrono::duration_cast <std::chrono::milliseconds> (end - start_time).count();
+	double count_down = time - passed / 1000;
+	std::string time_str = to_string(count_down);
+	bar_timer.append(time_str);
+	bar_timer.append(" s");
+	YsGlDrawFontBitmapDirect(bar_timer.c_str(), YsFont10x14, 10, 14);
 
+    if (count_down <= 0.1)
+    {
+        is_done = true;
+    }
 }
 double RenderMaze::get_timer(void) 
 {
-	double final_time = std::chrono::duration_cast <std::chrono::milliseconds> (stop_time - start_time).count() / 1000;
-	return final_time;
+    double final_time = std::chrono::duration_cast <std::chrono::milliseconds> (stop_time - start_time).count() / 1000;
+    return final_time;
 }

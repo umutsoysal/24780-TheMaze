@@ -2,6 +2,7 @@
 #include "game.h"
 #include "fssimplewindow.h"
 #include "rendermaze.h"
+#include "yssimplesound.h"
 
 void RenderGame(void *incoming)
 {
@@ -45,6 +46,17 @@ bool game::run()
 {
     FsRegisterOnPaintCallBack(RenderGame, &screen);
 
+	YsSoundPlayer player;
+	player.MakeCurrent();
+	player.Start();
+	YsSoundPlayer::SoundData wav;
+	if (YSOK != wav.LoadWav("background.wav"))
+	{
+		printf("Error -> Cannot load!\n");
+	//	return 1;
+	}
+	player.PlayBackground(wav);
+
     bool terminate = false;
     while (terminate == false)
     {
@@ -76,6 +88,9 @@ bool game::run()
         FsPushOnPaintEvent();
         FsSleep(10);
     }
+	
+	player.End();
+
     if (screen.is_won == true)
     {
         return true;
