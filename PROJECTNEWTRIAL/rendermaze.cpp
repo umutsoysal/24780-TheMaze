@@ -310,6 +310,7 @@ void RenderMaze::MovePlayer(const char direction)
 	{
 		is_done = true;
 		is_won = true;
+		timer_stop();
 	}
 	else
 	{
@@ -386,6 +387,10 @@ void RenderMaze::MovePlayer(const char direction)
 void RenderMaze::timer_start()
 {
 	start_time = std::chrono::system_clock::now();
+}
+void RenderMaze::timer_stop()
+{
+	stop_time = std::chrono::system_clock::now();
 }
 void RenderMaze::Render(void)
 {

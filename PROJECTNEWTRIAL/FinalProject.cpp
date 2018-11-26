@@ -29,6 +29,7 @@ int main(void)
     //        Monitor keyboard inputs for movement and queue movement sounds
     int counter;
     int duration;
+	int level = 0;
     bool finished;
     time_t start, end;
     
@@ -50,13 +51,13 @@ int main(void)
         }
         else if(FSKEY_S==menu.lastKey)
         {
-			game new_game(10,300);
+			game new_game(level,300);
             bool finished = new_game.run();
             double timespentingame = new_game.get_timer();
             const double ttime=timespentingame;
-            //break;
 			if (finished == true)
 			{
+				level += 1;
 				nextmenu.Run();
 			}
 			if (finished == false)

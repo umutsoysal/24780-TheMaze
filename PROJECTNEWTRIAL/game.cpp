@@ -30,7 +30,7 @@ game::game(int l = 10, double t = 300) //
 {
 	int wid, hei;
 	FsGetWindowSize(wid, hei);
-	this->level = l;
+	this->level = 50 - l;
 	int f_scale = 2*level; //10
     int x_size = (int) wid / f_scale - 1; //79 //16
     int y_size = (int) hei / f_scale - 1; //59 //12

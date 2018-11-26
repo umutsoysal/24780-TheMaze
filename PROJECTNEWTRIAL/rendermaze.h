@@ -21,7 +21,9 @@ private:
 	void panLeft(void);
 	void panRight(void);
 	decltype(std::chrono::system_clock::now()) start_time;
+	decltype(std::chrono::system_clock::now()) stop_time;
 	void timer_start(void);
+	void timer_stop(void);
 public:
 	bool is_done;
 	bool is_won;
