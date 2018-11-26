@@ -41,30 +41,43 @@ int main(void)
     NextGameMenu nextmenu;
     srand(time(nullptr));
     
-    for(;;)
+    for(;;) //EXPERIMENTAL
     {
-        printf("TESST HERE?");  //
         menu.Run();
         if(FSKEY_ESC==menu.lastKey)
         {
-            break;
+            break; //Terminate the program
         }
         else if(FSKEY_S==menu.lastKey)
         {
-            game new_game(level,300);
-            bool finished = new_game.run();
-            double timespentingame = new_game.get_timer();
-            const double ttime=timespentingame;
-            if (finished == true)
+            for (;;)
             {
-                level += 1;
+                game new_game(level,300);
+                bool finished = new_game.run();
+                double timespentingame = new_game.get_timer();
+                const double ttime=timespentingame;
                 nextmenu.Run();
-            }
-            if (finished == false)
-            {
+                if (finished == true)
+                {
+                    if(FSKEY_ESC==nextmenu.lastKey)
+                    {
+                        break; //Terminate the program
+                    }
+                    else if(FSKEY_S==menu.lastKey)
+                    {
+                        level += 1;
+                        
+                    }
+                    //game new_game(level,300);
+                    //bool finished = new_game.run();
+                }
+                else if (finished == false)
+                {
                 endmenu.Run();
+                }
             }
         }
+        
     }
     FsCloseWindow;
     time(&start);

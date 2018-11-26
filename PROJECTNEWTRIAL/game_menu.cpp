@@ -62,6 +62,7 @@ void RenderMenu(void *)
     glVertex2i(x1, y1+h);
     glEnd();
     
+    
     /*
     YsRawPngDecoder png1, png2, png3, png4;
     png1.Decode("PSYCHEDELIC-1.png");
@@ -149,6 +150,7 @@ void GameMenu::Run(void)
         
         if(FSKEY_ESC==lastKey || FSKEY_S==lastKey)
         {
+            
             break;
         }
         
