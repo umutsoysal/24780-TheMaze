@@ -13,6 +13,8 @@
 #include "game_menu.h"
 #include <string>
 #include <iostream>
+#include <math.h>
+#include "yspng.h"
 
 //TEST NEW COMMENT LINE
 void RenderMenu(void *)
@@ -30,10 +32,28 @@ void RenderMenu(void *)
     glColor3ub(0,0,0);
     glRasterPos2d(32,148);
     YsGlDrawFontBitmap32x48("24780 PROJECT: THE MAZE");
-    glRasterPos2d(32,172);
-    YsGlDrawFontBitmap16x24("S.....START");
-    glRasterPos2d(32,196);
-    YsGlDrawFontBitmap16x24("ESC...QUIT");
+    glRasterPos2d(182,292);
+    YsGlDrawFontBitmap20x32("S.....START");
+    glRasterPos2d(182,336);
+    YsGlDrawFontBitmap20x32("ESC...QUIT");
+
+    
+    YsRawPngDecoder png1, png2, png3, png4;
+    png1.Decode("PSYCHEDELIC-1.png");
+    png1.Flip();
+    printf("W=%d H=%d\n", png1.wid, png1.hei);
+    png2.Decode("PSYCHEDELIC-2.png");
+    png2.Flip();
+    printf("W=%d H=%d\n", png2.wid, png2.hei);
+    png3.Decode("PSYCHEDELIC-3.png");
+    png3.Flip();
+    printf("W=%d H=%d\n", png3.wid, png3.hei);
+    png4.Decode("PSYCHEDELIC-4.png");
+    png4.Flip();
+    printf("W=%d H=%d\n", png4.wid, png4.hei);
+    glRasterPos2d(0, png1.hei);
+    glDrawPixels(png1.wid, png1.hei, GL_RGBA, GL_UNSIGNED_BYTE, png1.rgba);
+    
     FsSwapBuffers();
 }
 void RenderEndMenu(void *)
@@ -51,12 +71,14 @@ void RenderEndMenu(void *)
     //glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glColor3ub(0,0,0);
     glColor3ub(0,0,255);
-    glRasterPos2d(32,48);
-    YsGlDrawFontBitmap16x24(myword);
-    glRasterPos2d(32,72);
-    YsGlDrawFontBitmap16x24("S.....START");
-    glRasterPos2d(32,96);
-    YsGlDrawFontBitmap16x24("ESC...QUIT");
+    glColor3ub(0,0,0);
+    glRasterPos2d(32,148);
+    YsGlDrawFontBitmap32x48("24780 PROJECT: THE MAZE");
+    glRasterPos2d(182,292);
+    YsGlDrawFontBitmap20x32("S.....START");
+    glRasterPos2d(182,336);
+    YsGlDrawFontBitmap20x32("ESC...QUIT");
+    
     FsSwapBuffers();
 }
 void RenderNextGameMenu(void *)
@@ -72,7 +94,7 @@ void RenderNextGameMenu(void *)
     strcat(myword, myword1);
     std::string Something = "Some Text";
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-    glColor3ub(255,0,0);
+    glColor3ub(0,100,255);
     glBegin(GL_QUADS);
     glVertex2i(0, 0);
     glVertex2i(0, 600);
@@ -81,13 +103,14 @@ void RenderNextGameMenu(void *)
     glEnd();
     //glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glColor3ub(0,0,255);
-    glRasterPos2d(32,48);
-    YsGlDrawFontBitmap16x24(myword);
-    glRasterPos2d(32,72);
-    YsGlDrawFontBitmap16x24("S.....START");
-    glRasterPos2d(32,96);
-    YsGlDrawFontBitmap16x24("ESC...QUIT");
+    glRasterPos2d(32,148);
+    YsGlDrawFontBitmap32x48(myword);
+    glRasterPos2d(182,286);
+    YsGlDrawFontBitmap20x32("S.....START");
+    glRasterPos2d(182,336);
+    YsGlDrawFontBitmap20x32("ESC...QUIT");
     FsSwapBuffers();
+    
 }
 
 void GameMenu::Run(void)
