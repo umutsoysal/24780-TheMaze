@@ -37,7 +37,7 @@ void RenderMenu(void *)
     glRasterPos2d(182,336);
     YsGlDrawFontBitmap20x32("ESC...QUIT");
 
-    
+    /*
     YsRawPngDecoder png1, png2, png3, png4;
     png1.Decode("PSYCHEDELIC-1.png");
     png1.Flip();
@@ -53,7 +53,7 @@ void RenderMenu(void *)
     printf("W=%d H=%d\n", png4.wid, png4.hei);
     glRasterPos2d(0, png1.hei);
     glDrawPixels(png1.wid, png1.hei, GL_RGBA, GL_UNSIGNED_BYTE, png1.rgba);
-    
+    */
     FsSwapBuffers();
 }
 void RenderEndMenu(void *)
