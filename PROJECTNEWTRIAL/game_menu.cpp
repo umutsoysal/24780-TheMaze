@@ -17,15 +17,15 @@
 //TEST NEW COMMENT LINE
 void RenderMenu(void *)
 {
-    
     std::string Something = "Some Text";
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-    glColor3ub(0,0,255);
-    glRasterPos2d(32,48);
-    YsGlDrawFontBitmap16x24("24780 PROJECT: THE MAZE");
-    glRasterPos2d(32,72);
+    
+    glColor3ub(255,0,0);
+    glRasterPos2d(32,148);
+    YsGlDrawFontBitmap32x48("24780 PROJECT: THE MAZE");
+    glRasterPos2d(32,172);
     YsGlDrawFontBitmap16x24("S.....START");
-    glRasterPos2d(32,96);
+    glRasterPos2d(32,196);
     YsGlDrawFontBitmap16x24("ESC...QUIT");
     FsSwapBuffers();
 }
@@ -45,6 +45,7 @@ void RenderEndMenu(void *)
 void RenderNextGameMenu(void *)
 {
     char integer_string[32];
+    
     int integer = 1234;
     sprintf(integer_string, "%d", integer);
     
@@ -112,7 +113,6 @@ void EndGameMenu::CleanUp(void)
 {
     duration=0;
 }
-
 
 void NextGameMenu::Run(void)
 {

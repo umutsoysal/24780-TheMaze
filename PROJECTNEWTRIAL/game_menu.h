@@ -9,7 +9,7 @@
 #ifndef GAME_MENU_H_INCLUDED
 #define GAME_MENU_H_INCLUDED
 
-//TEST NEW MENU 
+//TEST NEW MENU
 class GameObject
 {
     public:
@@ -41,7 +41,7 @@ class NextGameMenu
 {
 public:
     int lastKey;
-    int duration;
+    double duration;
     void Run(void);
     NextGameMenu();   // Constructor
     ~NextGameMenu();  // Destructor
