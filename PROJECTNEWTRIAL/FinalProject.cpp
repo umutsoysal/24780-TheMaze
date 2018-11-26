@@ -30,6 +30,7 @@ int main(void)
     int counter;
     int duration;
     int level = 0;
+	int timer = 30;
     bool finished;
     time_t start, end;
     
@@ -52,7 +53,7 @@ int main(void)
         {
             for (;;)
             {
-                game new_game(level,300);
+                game new_game(level,timer);
                 bool finished = new_game.run();
                 double timespentingame = new_game.get_timer();
                 const double ttime=timespentingame;
@@ -65,15 +66,16 @@ int main(void)
                     }
                     else if(FSKEY_S==menu.lastKey)
                     {
-                        level += 1;
-                        
+						level += 1;
+						timer = (int)timespentingame + 1;
                     }
                     //game new_game(level,300);
                     //bool finished = new_game.run();
                 }
                 else if (finished == false)
                 {
-                endmenu.Run();
+					timer += 2;
+					endmenu.Run();
                 }
             }
         }
