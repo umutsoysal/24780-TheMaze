@@ -1,7 +1,6 @@
-#ifndef YSSIMPLESOUND_IS_INCLUDED
+﻿#ifndef YSSIMPLESOUND_IS_INCLUDED
 #define YSSIMPLESOUND_IS_INCLUDED
 /* { */
-
 
 #include <vector>
 #include <memory>
@@ -159,6 +158,10 @@ public:
 	void KeepPlaying(void);
 
 	/*! Check if a wav data is being played.
+	    Linux ALSA implementation returns YSFALSE immediately when all the wav samples are
+	    transferred to the PCM's buffer.  I haven't found a way in ALSA to find if the wav completed
+	    playing.  Therefore running a loop with IsPlaying(wav)==YSTRUE won't play the wav file
+	    all the way to the end.
 	*/
 	YSBOOL IsPlaying(const SoundData &dat) const;
 

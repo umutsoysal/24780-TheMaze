@@ -36,13 +36,13 @@
     <ClInclude Include="yspngenc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="yssimplesound.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\PROJECTNEWTRIAL\framework3d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\PROJECTNEWTRIAL\game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yssimplesound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -71,16 +71,13 @@
     <ClCompile Include="yspngenc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="yssimplesound.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="yssimplesound_dsound.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\PROJECTNEWTRIAL\framework3d.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\PROJECTNEWTRIAL\game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="yssimplesound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

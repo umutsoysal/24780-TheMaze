@@ -2,7 +2,7 @@
 #include "game.h"
 #include "fssimplewindow.h"
 #include "rendermaze.h"
-#include "yssimplesound.h"
+//#include "yssimplesound.h"
 
 void RenderGame(void *incoming)
 {
