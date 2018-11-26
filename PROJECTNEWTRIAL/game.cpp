@@ -26,7 +26,7 @@ game::game(void)
 {
 	game(50, 300);
 }
-game::game(int l = 10, double t = 300) //
+game::game(int l, double t) //
 {
 	int wid, hei;
 	FsGetWindowSize(wid, hei);
