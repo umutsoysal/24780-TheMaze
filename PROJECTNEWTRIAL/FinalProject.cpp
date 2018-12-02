@@ -36,6 +36,7 @@ int main(void)
     int level = 0;
 	int timer = 30;
     bool finished;
+    char playername[256];
     std::ofstream points;
     
     time_t start, end;
@@ -58,7 +59,7 @@ int main(void)
         }
         else if(FSKEY_S==menu.lastKey)
         {
-            
+            FSKEY_NULL!=FsInkey();  // An attemp to clear last key input for data search
             printf("Welcome to the game!\n");
             // OPEN A DIALOG BOX AND ASK TO PROMPT A USER NAME ONE WORD ONLY, NO SPACE
             //FsOpenWindow(0,0,800,600,1);
@@ -77,21 +78,22 @@ int main(void)
             strcpy(nameentry, txt.GetString().GetPointer() ); // Convert dialogbox output to a char array
             printf("TEST You entered: %s\n",nameentry);
             // CHECK IF THE ENTERED NAME IS IN THE GAME HISTORY
-            int level;
             int i=0;
             char lastlevel[256];
+            
             
             ifstream fin;
             fin.open("scoreboard.txt");
             if(fin.fail())
             {
-                cout << "Input file opening failed.\n";
+                cout << "Database error: Input file opening failed.\n";
                 exit(1);
             }
             string levels;
             //cout << "Please enter a name: ";
             //cin  >> search;
             string search= nameentry;
+            strcpy(playername,nameentry);
             
             bool isFound=0;
             while(!fin.eof())
@@ -130,10 +132,6 @@ int main(void)
             }
             fin.close();
             printf("The last level is %d",level);
-            
-            
-            
-            
             
             
             
@@ -189,18 +187,32 @@ int main(void)
                 }
             }
         }
+      
+        printf("\n Last level is  %d",level);
+        printf("\n Saved\n");
+        
+        std::ofstream outfile;
+        outfile.open("scoreboard.txt", std::ios_base::app);
+        Player newentry;
+        newentry.name=playername;
+        newentry.level=level;
+        std::string text = newentry.name;
+        text += " "+std::to_string(newentry.level)+"\n";
+        outfile << text;
+        
         
     }
+    
     FsCloseWindow;
-    time(&start);
+    //time(&start);
     FsChangeToProgramDir();
     
     // US: I suspended it so the screen will be same dimensions each time.
     //FsOpenWindow(16, 16, x_size*f_scale, y_size*f_scale, 1, "24780 Final Project: The Maze");
-     printf("Just another test");
-    points.open ("gamedata.txt");
-    points << "an example of saved data";
-    points.close();
+    //printf("Just another test");
+    //points.open ("gamedata.txt");
+    //points << "an example of saved data";
+    //points.close();
     //printf("Duration is %d seconds",duration);
     return 0;
 }

@@ -34,6 +34,7 @@
 		81F1EBEB21AB4BE500D95483 /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F1EBE821AB4BE500D95483 /* game.cpp */; };
 		81FD14EF21B456B2002F4EFA /* dialogbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81FD14EC21B456B1002F4EFA /* dialogbox.cpp */; };
 		81FD14F021B456B2002F4EFA /* scoreboard.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81FD14EE21B456B2002F4EFA /* scoreboard.txt */; };
+		81FD14F221B45C79002F4EFA /* PROJECTNEWTRIAL in Resources */ = {isa = PBXBuildFile; fileRef = 81FD14F121B45C79002F4EFA /* PROJECTNEWTRIAL */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		81FD14EC21B456B1002F4EFA /* dialogbox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dialogbox.cpp; sourceTree = "<group>"; };
 		81FD14ED21B456B2002F4EFA /* dialogbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dialogbox.h; sourceTree = "<group>"; };
 		81FD14EE21B456B2002F4EFA /* scoreboard.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scoreboard.txt; sourceTree = "<group>"; };
+		81FD14F121B45C79002F4EFA /* PROJECTNEWTRIAL */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PROJECTNEWTRIAL; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 		8171060121A90FD300F233A4 /* PROJECTNEWTRIAL */ = {
 			isa = PBXGroup;
 			children = (
+				81FD14F121B45C79002F4EFA /* PROJECTNEWTRIAL */,
 				81FD14EC21B456B1002F4EFA /* dialogbox.cpp */,
 				81FD14ED21B456B2002F4EFA /* dialogbox.h */,
 				81FD14EE21B456B2002F4EFA /* scoreboard.txt */,
@@ -330,6 +333,7 @@
 				8177C74A21ABB6500000750C /* background.mp3 in Resources */,
 				81F1EBE921AB4BE500D95483 /* workflow.rtf in Resources */,
 				8177C74921ABB6500000750C /* background.wav in Resources */,
+				81FD14F221B45C79002F4EFA /* PROJECTNEWTRIAL in Resources */,
 				8177C74D21AC7AFC0000750C /* gamedata.txt in Resources */,
 				81FD14F021B456B2002F4EFA /* scoreboard.txt in Resources */,
 				8171060C21A90FD500F233A4 /* Main.storyboard in Resources */,
@@ -535,8 +539,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PROJECTNEWTRIAL/PROJECTNEWTRIAL.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PROJECTNEWTRIAL/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -544,6 +550,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cmu.PROJECTNEWTRIAL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -552,8 +559,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PROJECTNEWTRIAL/PROJECTNEWTRIAL.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PROJECTNEWTRIAL/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -561,6 +570,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cmu.PROJECTNEWTRIAL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
