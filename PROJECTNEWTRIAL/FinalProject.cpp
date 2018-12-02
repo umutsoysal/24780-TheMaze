@@ -200,12 +200,22 @@ int main(void)
         text += " "+std::to_string(newentry.level)+"\n";
         outfile << text;
         
+        int number_of_lines = 0;
+        std::string line;
+        std::ifstream myfile("scoreboard.txt");
+        while (std::getline(myfile, line))
+            ++number_of_lines;
+        std::cout << "Number of lines in text file: " << number_of_lines;
+        
         
     }
-    
     FsCloseWindow;
     //time(&start);
     FsChangeToProgramDir();
+    
+    
+    
+    
     
     // US: I suspended it so the screen will be same dimensions each time.
     //FsOpenWindow(16, 16, x_size*f_scale, y_size*f_scale, 1, "24780 Final Project: The Maze");
