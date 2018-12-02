@@ -750,7 +750,7 @@ static YsMacDelegate *ysDelegate=nil;
 @implementation YsOpenGLView
 -(void) drawRect: (NSRect) bounds
 {
-	printf("%s\n",__FUNCTION__);
+	//printf("%s\n",__FUNCTION__);
 	exposure=1;
 	FsOnPaintCallBackCpp();
 }

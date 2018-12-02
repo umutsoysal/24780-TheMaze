@@ -19,7 +19,6 @@
 //TEST NEW COMMENT LINE
 void RenderMenu(void *)
 {
-    
     int x1=360;
     int y1=400;
     int h=160;
@@ -158,7 +157,7 @@ void RenderPauseGameMenu(void *)
 
 
 
-void GameMenu::Run(void)
+int GameMenu::Run(void)
 {
     FsRegisterOnPaintCallBack(RenderMenu,nullptr);
     printf("WHY BY PASS HERE?");
@@ -167,9 +166,14 @@ void GameMenu::Run(void)
         FsPollDevice();
         lastKey=FsInkey();
         
-        if(FSKEY_ESC==lastKey || FSKEY_S==lastKey)
+        if (FSKEY_S==lastKey)
         {
-            
+            return 1;
+            break;
+        }
+        if(FSKEY_ESC==lastKey)
+        {
+            return 0;
             break;
         }
         
@@ -177,7 +181,6 @@ void GameMenu::Run(void)
         FsSleep(10);
     }
 }
-
 
 void EndGameMenu::Run(void)
 {

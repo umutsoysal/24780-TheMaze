@@ -13,6 +13,11 @@
 #include "fssimplewindow.h"
 #include "game_menu.h"
 #include "ysglfontdata.h"
+#include "dialogbox.h"
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 int main(void)
 {
@@ -31,6 +36,8 @@ int main(void)
     int level = 0;
 	int timer = 30;
     bool finished;
+    std::ofstream points;
+    
     time_t start, end;
     
     
@@ -51,6 +58,85 @@ int main(void)
         }
         else if(FSKEY_S==menu.lastKey)
         {
+            
+            printf("Welcome to the game!\n");
+            // OPEN A DIALOG BOX AND ASK TO PROMPT A USER NAME ONE WORD ONLY, NO SPACE
+            //FsOpenWindow(0,0,800,600,1);
+            char nameentry[256];
+            TextInput txt;
+            if(true==txt.Run("Enter Your Name>>"))
+            {
+                printf("You entered: %s\n",txt.GetString().GetPointer());
+            }
+            else
+            {
+                printf("Cancelled.\n");
+            }
+            //FsCloseWindow(); // It does not work but we will open a new window anyway
+            // CLOSE THE DIALOGBOX
+            strcpy(nameentry, txt.GetString().GetPointer() ); // Convert dialogbox output to a char array
+            printf("TEST You entered: %s\n",nameentry);
+            // CHECK IF THE ENTERED NAME IS IN THE GAME HISTORY
+            int level;
+            int i=0;
+            char lastlevel[256];
+            
+            ifstream fin;
+            fin.open("scoreboard.txt");
+            if(fin.fail())
+            {
+                cout << "Input file opening failed.\n";
+                exit(1);
+            }
+            string levels;
+            //cout << "Please enter a name: ";
+            //cin  >> search;
+            string search= nameentry;
+            
+            bool isFound=0;
+            while(!fin.eof())
+            {
+                string temp = "";
+                string levelstring = "";
+                getline(fin,temp);
+                for(int i=0;i<search.size();i++)
+                {
+                    if(temp[i]==search[i])
+                        isFound = 1;
+                    else
+                    {
+                        isFound =0;
+                        break;
+                    }
+                }
+                if(isFound)
+                {
+                    //cout << "Level is: ";
+                    for(int i = search.size()+1;i<temp.size();i++)
+                    {
+                        cout << temp[i];
+                        levelstring+=temp[i];
+                    }
+                    //printf("The size is %s\n",levelstring.c_str());
+                    //level = atoi(&temp[i]);
+                    level=atoi(levelstring.c_str());
+                    break;
+                }
+            }
+            if(fin.eof()&&(!isFound))
+            {
+                cout << "First time Player!\n";
+                level=0;
+            }
+            fin.close();
+            printf("The last level is %d",level);
+            
+            
+            
+            
+            
+            
+            
             for (;;)
             {
                 game new_game(level,timer);
@@ -112,8 +198,9 @@ int main(void)
     // US: I suspended it so the screen will be same dimensions each time.
     //FsOpenWindow(16, 16, x_size*f_scale, y_size*f_scale, 1, "24780 Final Project: The Maze");
      printf("Just another test");
-    
-
+    points.open ("gamedata.txt");
+    points << "an example of saved data";
+    points.close();
     //printf("Duration is %d seconds",duration);
     return 0;
 }

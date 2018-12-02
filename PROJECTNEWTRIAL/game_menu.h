@@ -24,7 +24,7 @@ class GameMenu
 {
     public:
     int lastKey;
-    void Run(void);
+    int Run(void);
 };
 class EndGameMenu
 {
