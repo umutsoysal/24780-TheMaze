@@ -81,7 +81,6 @@ int main(void)
             int i=0;
             char lastlevel[256];
             
-            
             ifstream fin;
             fin.open("scoreboard.txt");
             if(fin.fail())
@@ -206,7 +205,6 @@ int main(void)
         while (std::getline(myfile, line))
             ++number_of_lines;
         std::cout << "Number of lines in text file: " << number_of_lines;
-        
         
     }
     FsCloseWindow;
