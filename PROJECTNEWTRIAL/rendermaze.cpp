@@ -8,6 +8,7 @@
 #include "fssimplewindow.h"
 #include "rendermaze.h"
 #include "ysglfontdata.h"
+//#include "window.h" //NOT IMPLEMENTED
 
 std::string to_string(double x) // This one is from the internet.
 {
@@ -278,31 +279,45 @@ void RenderMaze::DrawPlayer(void)
 }
 void RenderMaze::panUp(void)
 {
-    if (camera.y < (double)height*scale / 2 +  side * scale / 2)
+    if (camera.y < (double)height*scale / 2 +  side * scale)
     {
         camera.y += scale / 2;
     }
 }
 void RenderMaze::panDown(void)
 {
-    if (camera.y > height*scale / 2 - side * scale / 2)
+    if (camera.y > height*scale / 2 - side * scale)
     {
         camera.y -= scale / 2;
     }
 }
 void RenderMaze::panLeft(void)
 {
-    if (camera.x > (double)width*scale / 2 - side * scale / 2) // 
+    if (camera.x > (double)width*scale / 2 - side * scale) // 
     {
         camera.x -= scale / 2;
     }
 }
 void RenderMaze::panRight(void)
 {
-    if (camera.x < (double)width*scale / 2 + side * scale / 2)
+    if (camera.x < (double)width*scale / 2 + side * scale) //
     {
         camera.x += scale / 2;
     }
+}
+void RenderMaze::zoomIn(void)
+{
+	if (camera.z > 500)
+	{
+		camera.z -= scale / 2;
+	}
+}
+void RenderMaze::zoomOut(void)
+{
+	if (camera.z < 1050)
+	{
+		camera.z += scale / 2;
+	}
 }
 void RenderMaze::MovePlayer(const char direction)
 {
@@ -379,8 +394,17 @@ void RenderMaze::MovePlayer(const char direction)
         case FSKEY_D:
             panRight();
             break;
-        case FSKEY_X:
+        case FSKEY_Q:
+			zoomIn();
             break;
+		case FSKEY_E:
+			zoomOut();
+			break;
+		case FSKEY_I:
+			// Not yet implemented. For future release
+			// game_window instructions(400, 600, FSKEY_Y, FSKEY_N);
+			// instructions.initialize();
+			break;
         }
     }
 }
@@ -433,40 +457,63 @@ void RenderMaze::Render(void)
 	std::string bar_version = "The Maze v.0.0.1.";
 	YsGlDrawFontBitmap10x14(bar_version.c_str());
 
-	glColor4ub(100, 100, 100, 255);
-	glBegin(GL_QUADS);
-	glVertex2i(0, 0);
-	glVertex2i(0, 20);
-	glVertex2i(wid, 20);
-	glVertex2i(wid, 0);
-	glEnd();
 
-	glColor3ub(200, 200, 200);
-	glRasterPos2d(20, 17);
-	YsGlDrawFontBitmap10x14(bar_version.c_str());
+	{
+		glColor4ub(100, 100, 100, 255);
+		glBegin(GL_QUADS);
+		glVertex2i(0, hei);
+		glVertex2i(0, hei - 20);
+		glVertex2i(wid, hei - 20);
+		glVertex2i(wid, hei);
+		glEnd();
 
-	glRasterPos2d((int)wid/2 - 20, 17);
-	std::string bar_level = "Level ";
-	bar_level.append(to_string(level));
-	YsGlDrawFontBitmap10x14(bar_level.c_str());
+		glColor3ub(200, 200, 200);
+		glRasterPos2d(5, hei - 3);
+		YsGlDrawFontBitmap10x14("Movement: [UP, DOWN, LEFT, RIGHT], Pan: [W, S, A, D], Zoom In/Out: [Q, E]");
+	}
 
-	glRasterPos2d(wid - 220, 17);
-	std::string bar_timer = "Time left: ";
-	auto end = std::chrono::system_clock::now();
-	double passed = std::chrono::duration_cast <std::chrono::milliseconds> (end - start_time).count();
-	double count_down = time - passed / 1000;
-	std::string time_str = to_string(count_down);
-	bar_timer.append(time_str);
-	bar_timer.append(" s");
-	YsGlDrawFontBitmapDirect(bar_timer.c_str(), YsFont10x14, 10, 14);
+	{
+		glColor4ub(100, 100, 100, 255);
+		glBegin(GL_QUADS);
+		glVertex2i(0, 0);
+		glVertex2i(0, 20);
+		glVertex2i(wid, 20);
+		glVertex2i(wid, 0);
+		glEnd();
 
-    if (count_down <= 0.1)
-    {
-        is_done = true;
-    }
+		glColor3ub(200, 200, 200);
+		glRasterPos2d(20, 17);
+		YsGlDrawFontBitmap10x14(bar_version.c_str());
+
+		glRasterPos2d((int)wid / 2 - 20, 17);
+		std::string bar_level = "Level ";
+		bar_level.append(to_string(level));
+		YsGlDrawFontBitmap10x14(bar_level.c_str());
+
+		glRasterPos2d(wid - 220, 17);
+		std::string bar_timer = "Time left: ";
+		auto end = std::chrono::system_clock::now();
+		double passed = std::chrono::duration_cast <std::chrono::milliseconds> (end - start_time).count();
+		double count_down = time - passed / 1000;
+		std::string time_str = to_string(count_down);
+		bar_timer.append(time_str);
+		bar_timer.append(" s");
+		YsGlDrawFontBitmapDirect(bar_timer.c_str(), YsFont10x14, 10, 14);
+
+		if (count_down <= 0.1)
+		{
+			is_done = true;
+		}
+	}
+
+    
 }
 double RenderMaze::get_timer(void) 
 {
     double final_time = std::chrono::duration_cast <std::chrono::milliseconds> (stop_time - start_time).count() / 1000;
     return final_time;
+}
+const int RenderMaze::get_level(void)
+{
+	return level;
 }

@@ -10,9 +10,6 @@
 #define dialogbox_h
 
 
-#endif /* dialogbox_h */
-
-
 
 template <class T>
 class GenericArray
@@ -90,9 +87,12 @@ public:
 
 class Player
 {
+private:
+
 public:
     char *name;
     int level;
+	int timer;
 };
 class Scoreboard
 {
@@ -109,3 +109,5 @@ public:
     void Sort(void);
     void Draw(void);
 };
+
+#endif /* dialogbox_h */

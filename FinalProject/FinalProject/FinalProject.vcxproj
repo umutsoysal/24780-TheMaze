@@ -152,6 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\PROJECTNEWTRIAL\dialogbox.h" />
     <ClInclude Include="..\..\PROJECTNEWTRIAL\framework3d.h" />
     <ClInclude Include="..\..\PROJECTNEWTRIAL\game.h" />
     <ClInclude Include="..\..\PROJECTNEWTRIAL\game_menu.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="yssimplesound.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\PROJECTNEWTRIAL\dialogbox.cpp" />
     <ClCompile Include="..\..\PROJECTNEWTRIAL\FinalProject.cpp" />
     <ClCompile Include="..\..\PROJECTNEWTRIAL\framework3d.cpp" />
     <ClCompile Include="..\..\PROJECTNEWTRIAL\game.cpp" />

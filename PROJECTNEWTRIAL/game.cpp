@@ -3,17 +3,19 @@
 #include "fssimplewindow.h"
 #include "rendermaze.h"
 #include "yssimplesound.h"
+#include "ysglfontdata.h"
 
 void RenderGame(void *incoming)
 {
     RenderMaze *screen = (RenderMaze *)incoming;
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	
+
     bool use_3d = true;
     if (use_3d == false)
     {
         screen->DrawMap();
-        //YsGlDrawFontBitmap16x24("24780 PROJECT: THE MAZE");
         screen->DrawPlayer();
     }
     else
@@ -31,7 +33,15 @@ game::game(int l, double t) //
 {
 	int wid, hei;
 	FsGetWindowSize(wid, hei);
-	this->level = 50 - l;
+	if (l < 50)
+	{
+		this->level = 50 - l;
+	}
+	else
+	{
+		this->level = 49;
+		printf("\nYou have reached the highest level possible.");
+	}
 	int f_scale = 2*level; //10
     int x_size = (int) wid / f_scale; //79 //16
     int y_size = (int) hei / f_scale; //59 //12
