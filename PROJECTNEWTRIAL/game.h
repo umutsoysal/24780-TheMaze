@@ -1,11 +1,12 @@
 #include "rendermaze.h"
 
+#ifndef GAME_FP_GAME_24780
+#define GAME_FP_GAME_24780
 
 class game
 {
 private:
 	RenderMaze screen;
-	
 public:
     bool is_abort;
 	int level;
@@ -15,3 +16,5 @@ public:
 	bool run(void);
 	double get_timer(void);
 };
+
+#endif

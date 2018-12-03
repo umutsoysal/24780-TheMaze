@@ -427,6 +427,8 @@ int Parser::Parse(char incoming[])
     return ParseString(wTop,wLen,maxlen,str);
 }
 
+
+
 Scoreboard::Scoreboard()
 {
     nVtx=0; // number of entries in the database

@@ -20,6 +20,8 @@ private:
 	void panDown(void);
 	void panLeft(void);
 	void panRight(void);
+	void zoomIn(void);
+	void zoomOut(void);
 	decltype(std::chrono::system_clock::now()) start_time;
 	decltype(std::chrono::system_clock::now()) stop_time;
 	void timer_start(void);
@@ -41,6 +43,7 @@ public:
     void DrawPlayer(void);
 	void Render(void);
 	double get_timer(void);
+	const int get_level(void);
 };
 
 #endif
